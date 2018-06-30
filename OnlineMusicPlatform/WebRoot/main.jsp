@@ -7,9 +7,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="MainStyle.css">
     <base href="<%=basePath%>">
     
-    <title>My JSP 'index.jsp' starting page</title>
+    <title>My JSP 'main.jsp' starting page</title>
+    
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
@@ -18,10 +20,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+
   </head>
   
   <body>
-    This is my JSP page. <br>
-    <% pageContext.forward("/main.jsp"); %>
+    <div class="titleBar">
+      <a href="" class="titleBar">RuanKoMusic</a>
+      <a href="" class="signright">Sign up</a>
+      <a class="signor">or</a>
+      <a href="" class="signleft">Sign in</a>
+      <form action="" method="post">
+        <input type="submit" name="SearchSubmit" class="searchSub" value=" ">
+        <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
+      </form>
+    </div>
+    <div class="playerBar"></div>
   </body>
 </html>
