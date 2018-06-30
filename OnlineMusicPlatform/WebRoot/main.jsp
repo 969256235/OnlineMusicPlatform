@@ -25,15 +25,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     <div class="titleBar">
-      <a href="" class="titleBar">RuanKoMusic</a>
-      <a href="" class="signright">Sign up</a>
-      <a class="signor">or</a>
-      <a href="" class="signleft">Sign in</a>
-      <form action="" method="post">
-        <input type="submit" name="SearchSubmit" class="searchSub" value=" ">
-        <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
-      </form>
+      <div class="center">
+        <a href="/OnlineMusicPlatform/main.jsp" class="titleBar">RuanKoMusic</a>
+        <a href="" class="signright">Sign up</a>
+        <a class="signor">or</a>
+        <a href="" class="signleft">Sign in</a>
+        <form action="" method="post">
+          <input type="submit" name="SearchSubmit" class="searchSub" value=" ">
+          <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
+        </form>
+      </div>
     </div>
-    <div class="playerBar"></div>
+    <div class="playerBar">
+    </div>
+    <div class="bodycenter">
+      <img src="${pageContext.servletContext.contextPath}/images/titleImg1.jpg" class="titleImg"/>
+      <div>
+        
+      </div>
+    </div>
   </body>
 </html>
