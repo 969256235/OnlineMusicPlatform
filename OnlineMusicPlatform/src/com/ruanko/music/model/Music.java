@@ -23,10 +23,6 @@ public class Music {
 		
 	}
 	
-	public String[] getTags(){
-		return tag.split(";");
-	}
-	
 	//setters and getters	
 	public int getId() {
 		return id;

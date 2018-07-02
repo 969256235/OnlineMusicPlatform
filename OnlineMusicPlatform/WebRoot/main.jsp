@@ -7,7 +7,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="MainStyle.css">
+    <link rel="stylesheet" type="text/css" href="style/MainStyle.css">
     <base href="<%=basePath%>">
     
     <title>My JSP 'main.jsp' starting page</title>
@@ -37,7 +37,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
     </div>
     <div class="playerBar">
-    	
+      <audio controls>
+    	<source src="${pageContext.servletContext.contextPath}/upload/201807021545.mp3" type="audio/mpeg" />
+      </audio>
     </div>
     <div class="bodycenter">
       <img src="${pageContext.servletContext.contextPath}/images/titleImg1.jpg" class="titleImg"/>
