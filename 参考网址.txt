@@ -1,0 +1,26 @@
+﻿tomcat+myeclipse+mysql环境搭建
+https://www.cnblogs.com/lwy-kitty/p/4977084.html
+
+从零开始开发一个全栈Web应用实录
+https://blog.csdn.net/weixin_31347831/article/details/74625813
+
+通过JDBC进行简单的增删改查（以MySQL为例）
+https://www.cnblogs.com/wuyuegb2312/p/3872607.html
+
+Java Web应用开发实例
+https://blog.csdn.net/iverson79_82/article/details/1641060?locationNum=1&fps=1
+
+由浅入深web应用开发,适合java web初学者
+https://jingyan.baidu.com/article/d2b1d1027d9ed95c7f37d448.html?qq-pf-to=pcqq.group
+
+tomcat怎么连接mysql
+https://zhidao.baidu.com/question/458538841085754045.html?qq-pf-to=pcqq.group
+
+Java后端WebSocket的Tomcat实现
+https://www.cnblogs.com/xdp-gacl/p/5193279.html
+
+教程导航
+https://zhongfucheng.bitcron.com/post/shou-ji/wen-zhang-dao-hang 
+https://zhongfucheng.bitcron.com/post/shou-ji/pcduan-wen-zhang-dao-hang
+
+
