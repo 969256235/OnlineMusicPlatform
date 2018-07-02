@@ -1,4 +1,8 @@
-﻿tomcat+myeclipse+mysql环境搭建
+﻿
+网课
+edu.ruanko.com
+ 
+tomcat+myeclipse+mysql环境搭建
 https://www.cnblogs.com/lwy-kitty/p/4977084.html
 
 从零开始开发一个全栈Web应用实录
@@ -22,5 +26,3 @@ https://www.cnblogs.com/xdp-gacl/p/5193279.html
 教程导航
 https://zhongfucheng.bitcron.com/post/shou-ji/wen-zhang-dao-hang 
 https://zhongfucheng.bitcron.com/post/shou-ji/pcduan-wen-zhang-dao-hang
-
-
