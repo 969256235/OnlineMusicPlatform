@@ -1,5 +1,7 @@
 package com.ruanko.music.model;
 
+import java.util.Date;
+
 /**
  * 用户实体类
  */
@@ -8,9 +10,9 @@ public class User {
 	private int id;
 	private String username;
 	private boolean isAdministrator;
+	private Date registDate;
 	
-	public User()
-	{
+	public User(){
 		isAdministrator = false;
 	}
 
@@ -37,6 +39,14 @@ public class User {
 
 	public void setAdministrator(boolean isAdministrator) {
 		this.isAdministrator = isAdministrator;
+	}
+
+	public Date getRegistDate() {
+		return registDate;
+	}
+
+	public void setRegistDate(Date registDate) {
+		this.registDate = registDate;
 	}
 	
 	

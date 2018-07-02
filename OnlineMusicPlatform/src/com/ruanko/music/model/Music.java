@@ -19,8 +19,7 @@ public class Music {
 	private String tag;
 	private Date releaseDate;
 	
-	public Music()
-	{
+	public Music(){
 		
 	}
 	
