@@ -37,12 +37,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
     </div>
     <div class="playerBar">
+    	
     </div>
     <div class="bodycenter">
       <img src="${pageContext.servletContext.contextPath}/images/titleImg1.jpg" class="titleImg"/>
-      <div>
-        
-      </div>
+      <a href="" class="Lable">Classify</a>
+      <p class="line">line1</p>
     </div>
   </body>
 </html>
