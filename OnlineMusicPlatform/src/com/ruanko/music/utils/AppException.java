@@ -5,7 +5,7 @@ package com.ruanko.music.utils;
  * @author Zuo
  */
 public class AppException extends Exception{
-//aaaa
+
 	private int exceptionCode; //异常编号
 	private String message;   //异常消息
 	
