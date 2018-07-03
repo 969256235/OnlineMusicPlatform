@@ -1,7 +1,5 @@
 package com.ruanko.music.model;
 
-import java.util.Date;
-
 /**
  * 用户基础实体类
  */

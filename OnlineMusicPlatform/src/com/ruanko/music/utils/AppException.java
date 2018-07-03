@@ -21,8 +21,12 @@ public class AppException extends Exception{
 	public int getExceptionCode() {
 		return exceptionCode;
 	}
-
+	
 	public String getMessage() {
+		return message;
+	}
+
+	public String getDetailMessage() {
 		String detailMessage = "Detail message: exception" + this.exceptionCode + " " + message;
 		return detailMessage;
 	}
