@@ -23,7 +23,7 @@ public class MusicBusiModel {
 	private String cover;        //封面
 	private String artist_photo; //艺人照片
 	
-	//Constructor
+	//Constructors
 	public MusicBusiModel(){
 		this.id = 0;
 		this.name = "";
