@@ -49,5 +49,20 @@ public class UserService {
 		}		
 		return flag;
 	}
-		
+	
+	/**
+	 * 尝试登录
+	 * @param user
+	 * @return 用户昵称
+	 * @throws AppException
+	 */
+	public String login(User user) throws AppException{
+		String nickname = "";
+		try{
+			nickname = user_dao.login(user.getAccount(), user.getPassword());
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.login");
+		}
+		return nickname;
+	}
 }

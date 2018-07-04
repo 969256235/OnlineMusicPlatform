@@ -24,4 +24,12 @@ public interface UserDao {
 	 */
 	public boolean save(User user) throws AppException;
 	
+	/**
+	 * 尝试登录
+	 * @param account
+	 * @param password
+	 * @return 用户昵称
+	 * @throws AppException
+	 */
+	public String login(String account, String password) throws AppException;
 }

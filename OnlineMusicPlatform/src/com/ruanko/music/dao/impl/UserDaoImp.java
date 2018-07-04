@@ -21,4 +21,10 @@ public class UserDaoImp implements UserDao{
 		return false;
 	}
 
+	@Override
+	public String login(String account, String password) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
