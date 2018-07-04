@@ -17,4 +17,28 @@ public class MusicDaoImp implements MusicDao{
 		return null;
 	}
 
+	@Override
+	public MusicBusiModel getMusicById(String Id) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<MusicBusiModel> getMusicByName(String name) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<MusicBusiModel> getMusicByArtist(String art_name) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ArrayList<MusicBusiModel> getMusicByAlbum(String alb_name) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

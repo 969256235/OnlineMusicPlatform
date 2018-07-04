@@ -25,13 +25,50 @@ public class MusicService {
 	 * @throws AppException
 	 */
 	public ArrayList<MusicBusiModel> getMostPopMusic() throws AppException{
-		ArrayList<MusicBusiModel> mpm = new ArrayList<MusicBusiModel>();
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
-			mpm = music_dao.getMostPopMusic();
+			mbml = music_dao.getMostPopMusic();
 		}catch(AppException e){
-			throw new AppException("com.ruanko.music.service.UserService.register");
+			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
-		return mpm;
+		return mbml;
 	}
 
+	/**
+	 * 通过Id搜索歌曲
+	 * @param Id
+	 * @return MusicBusiModel
+	 * @throws AppException
+	 */
+	public MusicBusiModel getMusicById(String id) throws AppException{
+		MusicBusiModel mbm = new MusicBusiModel();
+		try{
+			mbm = music_dao.getMusicById(id);
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.getMusicById");
+		}
+				return null;		
+	}
+	
+	/**
+	 * 搜索歌曲
+	 * @param content 搜索字段
+	 * @param type 0-按歌曲名搜索；1-按歌手名搜索；2-按专辑名搜索
+	 * @return 符合条件的歌曲列表
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
+		try{
+			switch(type){
+			case 0:mbml = music_dao.getMusicByName(content);break;
+			case 1:mbml = music_dao.getMusicByArtist(content);break;
+			case 2:mbml = music_dao.getMusicByAlbum(content);break;
+			default:mbml = null;break;
+			}
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.getMusicByContent");
+		}
+		return mbml;		
+	}
 }

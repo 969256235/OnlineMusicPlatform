@@ -17,4 +17,35 @@ public interface MusicDao {
 	 */
 	public ArrayList<MusicBusiModel> getMostPopMusic() throws AppException;
 	
+	/**
+	 * 通过Id搜索歌曲
+	 * @param 歌曲id
+	 * @return MusicBusiModel
+	 * @throws AppException
+	 */
+	public MusicBusiModel getMusicById(String Id) throws AppException;
+	
+	/**
+	 * 通过歌曲名搜索获取歌曲列表
+	 * @param name
+	 * @return 符合条件的MusiBusiModel数组
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getMusicByName(String name) throws AppException;
+	
+	/**
+	 * 通过歌曲名搜索获取歌曲列表
+	 * @param art_name
+	 * @return 符合条件的MusiBusiModel数组
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getMusicByArtist(String art_name) throws AppException;
+	
+	/**
+	 * 通过歌曲名搜索获取歌曲列表
+	 * @param alb_name
+	 * @return 符合条件的MusiBusiModel数组
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getMusicByAlbum(String alb_name) throws AppException;
 }
