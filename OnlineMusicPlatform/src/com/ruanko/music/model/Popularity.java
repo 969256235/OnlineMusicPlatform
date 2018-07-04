@@ -1,7 +1,5 @@
 package com.ruanko.music.model;
 
-import java.sql.Timestamp;
-
 /**
  * 热度基础实体类
  */
@@ -13,7 +11,6 @@ public class Popularity {
 	
 	private int down_count;  //下载量
 	private int hit_count;   //点击量
-	private Timestamp date;  //
 	
 	private int del;  //删除标记(0-未删除;1-已删除)
 	
@@ -23,7 +20,6 @@ public class Popularity {
 		this.obj_id = 0;
 		this.down_count = 0;
 		this.hit_count = 0;
-		this.date = null;
 		this.del = 0;
 	}
 
@@ -66,14 +62,6 @@ public class Popularity {
 
 	public void setHit_count(int hit_count) {
 		this.hit_count = hit_count;
-	}
-
-	public Timestamp getDate() {
-		return date;
-	}
-
-	public void setDate(Timestamp date) {
-		this.date = date;
 	}
 
 	public int getDel() {
