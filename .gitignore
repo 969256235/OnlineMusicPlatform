@@ -11,3 +11,9 @@ OnlineMusicPlatform/WebRoot/WEB-INF/classes/.struts.mex
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/.struts.mex
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/.struts.mex
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/.struts.mex
+OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/web/GetRankList.class
+*.class
+OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/utils/AppException.class
+OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/web/GetRankList.class
+OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/utils/AppException.class
+*.class
