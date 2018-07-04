@@ -3,33 +3,95 @@ package com.ruanko.music.model;
 import java.util.Date;
 
 /**
- * 音乐实体类
+ * 音乐基础实体类
  */
 public class Music {
 
-	private int id;
-	private String name;
-	private String singer;
-	private String adress;
-	private String photo;
-	private String picture;
-	private String lrc;
-	private int palyTime;
-	private int downloadTime;
-	private String tag;
-	private Date releaseDate;
+	private int id;                  //主键id
+	private int art_id;              //艺人id
+	private int alb_id;              //专辑id
+	private int[] tag = new int[3];  //标签id
+	
+	private String name;        //歌名  
+	private String realname;
+	private String lrc;        //歌词
+	private String zone;	   //地区
+	private Date publishdate;  //发行日期
+	
+	private String musicurl;   //歌曲地址
+	
+	private int del;  //删除标记(0-未删除;1-已删除)
 	
 	public Music(){
-		
+		int[] tag_ = {0,0,0};
+		this.id = 0;
+		this.art_id = 0;
+		this.alb_id = 0;
+		this.tag = tag_;
+		this.name = "";
+		this.realname = "";
+		this.lrc = "";
+		this.zone = "";
+		this.publishdate = null;
+		this.musicurl = "";
+		this.del = 0;
+	}
+
+	public int getTag1(){
+		return tag[0];
 	}
 	
-	//setters and getters	
+	public void setTag1(int tag1){
+		this.tag[0] = tag1;
+	}
+	
+	public int getTag2(){
+		return tag[1];
+	}
+	
+	public void setTag2(int tag2){
+		this.tag[1] = tag2;
+	}
+	
+	public int getTag3(){
+		return tag[2];
+	}
+	
+	public void setTag3(int tag3){
+		this.tag[2] = tag3;
+	}
+	
+	//Generated setters and getters
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getArt_id() {
+		return art_id;
+	}
+
+	public void setArt_id(int art_id) {
+		this.art_id = art_id;
+	}
+
+	public int getAlb_id() {
+		return alb_id;
+	}
+
+	public void setAlb_id(int alb_id) {
+		this.alb_id = alb_id;
+	}
+
+	public int[] getTag() {
+		return tag;
+	}
+
+	public void setTag(int[] tag) {
+		this.tag = tag;
 	}
 
 	public String getName() {
@@ -40,36 +102,12 @@ public class Music {
 		this.name = name;
 	}
 
-	public String getSinger() {
-		return singer;
+	public String getRealname() {
+		return realname;
 	}
 
-	public void setSinger(String singer) {
-		this.singer = singer;
-	}
-
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	public String getPicture() {
-		return picture;
-	}
-
-	public void setPicture(String picture) {
-		this.picture = picture;
+	public void setRealname(String realname) {
+		this.realname = realname;
 	}
 
 	public String getLrc() {
@@ -80,36 +118,36 @@ public class Music {
 		this.lrc = lrc;
 	}
 
-	public int getPalyTime() {
-		return palyTime;
+	public String getZone() {
+		return zone;
 	}
 
-	public void setPalyTime(int palyTime) {
-		this.palyTime = palyTime;
+	public void setZone(String zone) {
+		this.zone = zone;
 	}
 
-	public int getDownloadTime() {
-		return downloadTime;
+	public Date getPublishdate() {
+		return publishdate;
 	}
 
-	public void setDownloadTime(int downloadTime) {
-		this.downloadTime = downloadTime;
+	public void setPublishdate(Date publishdate) {
+		this.publishdate = publishdate;
 	}
 
-	public String getTag() {
-		return tag;
+	public String getMusicurl() {
+		return musicurl;
 	}
 
-	public void setTag(String tag) {
-		this.tag = tag;
+	public void setMusicurl(String musicurl) {
+		this.musicurl = musicurl;
 	}
 
-	public Date getReleaseDate() {
-		return releaseDate;
+	public int getDel() {
+		return del;
 	}
 
-	public void setReleaseDate(Date releaseDate) {
-		this.releaseDate = releaseDate;
+	public void setDel(int del) {
+		this.del = del;
 	}
-
+		
 }
