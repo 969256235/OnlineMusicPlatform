@@ -1,7 +1,5 @@
 package com.ruanko.music.model;
 
-import java.util.Date;
-
 /**
  * 音乐基础实体类
  */
@@ -16,7 +14,7 @@ public class Music {
 	private String realname;
 	private String lrc;        //歌词
 	private String zone;	   //地区
-	private Date publishdate;  //发行日期
+	private String publishdate;  //发行日期
 	
 	private String musicurl;   //歌曲地址
 	
@@ -126,11 +124,11 @@ public class Music {
 		this.zone = zone;
 	}
 
-	public Date getPublishdate() {
+	public String getPublishdate() {
 		return publishdate;
 	}
 
-	public void setPublishdate(Date publishdate) {
+	public void setPublishdate(String publishdate) {
 		this.publishdate = publishdate;
 	}
 

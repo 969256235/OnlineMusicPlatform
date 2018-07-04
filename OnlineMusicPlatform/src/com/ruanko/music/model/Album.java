@@ -1,7 +1,5 @@
 package com.ruanko.music.model;
 
-import java.util.Date;
-
 /**
  * 专辑基本实体类
  */
@@ -11,7 +9,7 @@ public class Album {
 	private int art_id;        //艺人id
 	
 	private String name;       //专辑名
-	private Date publishdate;  //发行日期
+	private String publishdate;  //发行日期
 	private String image1;     //图片路径
 	private String image2;     //图片路径
 	private String company;    //发行商
@@ -56,11 +54,11 @@ public class Album {
 		this.name = name;
 	}
 
-	public Date getPublishdate() {
+	public String getPublishdate() {
 		return publishdate;
 	}
 
-	public void setPublishdate(Date publishdate) {
+	public void setPublishdate(String publishdate) {
 		this.publishdate = publishdate;
 	}
 

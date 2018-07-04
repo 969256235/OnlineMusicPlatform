@@ -1,7 +1,5 @@
 package com.ruanko.music.model;
 
-import java.util.Date;
-
 /**
  * 音乐业务实体类
  */
@@ -14,7 +12,7 @@ public class MusicBusiModel {
 	private String album;      //专辑名
 	private String lrc;        //歌词
 	private String zone;	   //地区
-	private Date publishdate;  //发行日期
+	private String publishdate;  //发行日期
 	private String[] tag = new String[3]; //标签
 	private int down_count;    //下载量
 	private int hit_count;     //点击量
@@ -277,11 +275,11 @@ public class MusicBusiModel {
 		this.zone = zone;
 	}
 
-	public Date getPublishdate() {
+	public String getPublishdate() {
 		return publishdate;
 	}
 
-	public void setPublishdate(Date publishdate) {
+	public void setPublishdate(String publishdate) {
 		this.publishdate = publishdate;
 	}
 

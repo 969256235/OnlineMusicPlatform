@@ -47,7 +47,7 @@ public class MusicService {
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMusicById");
 		}
-				return null;		
+				return mbm;		
 	}
 	
 	/**

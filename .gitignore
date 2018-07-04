@@ -17,3 +17,4 @@ OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/utils/AppException.
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/web/GetRankList.class
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/utils/AppException.class
 *.class
+OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/model/Music.class
