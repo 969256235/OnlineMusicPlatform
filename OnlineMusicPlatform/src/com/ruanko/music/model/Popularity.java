@@ -6,7 +6,7 @@ package com.ruanko.music.model;
 public class Popularity {
 
 	private int id;        //主键id
-	private int type;      //类型
+	private int type;      //类型  1-album；2-artist；3-music
 	private int obj_id;    //根据类型判定
 	
 	private int down_count;  //下载量
@@ -21,6 +21,14 @@ public class Popularity {
 		this.down_count = 0;
 		this.hit_count = 0;
 		this.del = 0;
+	}
+	
+	public void setAttributes(int id_,int type_,int obj_id_,int dc_,int hc_){
+		this.id = id_;
+		this.type = type_;
+		this.obj_id =  obj_id_;
+		this.down_count = dc_;
+		this.hit_count = hc_;
 	}
 
 	//Generated setters and getters

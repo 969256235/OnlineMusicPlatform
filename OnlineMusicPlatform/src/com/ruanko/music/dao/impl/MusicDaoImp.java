@@ -7,6 +7,7 @@ import com.ruanko.music.model.Artist;
 import com.ruanko.music.model.Music;
 import com.ruanko.music.model.MusicBusiModel;
 import com.ruanko.music.model.Popularity;
+import com.ruanko.music.model.Tag;
 import com.ruanko.music.utils.AppException;
 
 /**
@@ -45,11 +46,23 @@ public class MusicDaoImp implements MusicDao{
 	}
 
 	@Override
+	public Artist getArtistById(String Id) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public ArrayList<Artist> getArtistByName(String name) throws AppException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
+	public Album getAlbumById(String Id) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public ArrayList<Album> getAlbumByName(String name) throws AppException {
 		// TODO Auto-generated method stub
@@ -57,31 +70,43 @@ public class MusicDaoImp implements MusicDao{
 	}
 
 	@Override
-	public boolean addMusic(Music music) throws AppException {
+	public Tag getTagByName(String name) throws AppException {
 		// TODO Auto-generated method stub
-		return false;
+		return null;
+	}
+	
+	@Override
+	public int addMusic(Music music) throws AppException {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-	public boolean addArtist(Artist artist) throws AppException {
+	public int addArtist(Artist artist) throws AppException {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 	@Override
-	public boolean addAlbum(Album album) throws AppException {
+	public int addAlbum(Album album) throws AppException {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 	@Override
-	public boolean addPopularity(Popularity pop) throws AppException {
+	public int addPopularity(Popularity pop) throws AppException {
 		// TODO Auto-generated method stub
-		return false;
+		return 0;
 	}
 
 	@Override
 	public boolean delMusic(String id) throws AppException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean resetMusic(Music music) throws AppException {
 		// TODO Auto-generated method stub
 		return false;
 	}

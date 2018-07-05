@@ -30,11 +30,24 @@ public class Music {
 		this.realname = "";
 		this.lrc = "";
 		this.zone = "";
-		this.publishdate = null;
+		this.publishdate = "";
 		this.musicurl = "";
 		this.del = 0;
 	}
 
+	public void setAttributes(int id_,int art_id_,int alb_id_,int[] tag_,String name_,String rn_,String lrc_,String zone_, String pd_,String url_){
+		this.id = id_;
+		this.art_id = art_id_;
+		this.alb_id = alb_id_;
+		this.tag = tag_;
+		this.name = name_;
+		this.realname = rn_;
+		this.lrc = lrc_;
+		this.zone = zone_;
+		this.publishdate = pd_;
+		this.musicurl = url_;
+	}
+	
 	public int getTag1(){
 		return tag[0];
 	}

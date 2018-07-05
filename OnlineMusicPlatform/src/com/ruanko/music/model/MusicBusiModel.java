@@ -30,7 +30,7 @@ public class MusicBusiModel {
 		this.album = "No Imformation";
 		this.lrc = "";
 		this.zone = "";
-		this.publishdate = null;
+		this.publishdate = "";
 		this.tag[0] = "";
 		this.tag[1] = "";
 		this.tag[2] = "";
@@ -191,6 +191,23 @@ public class MusicBusiModel {
 		this.musicurl = music.getMusicurl();
 		this.cover = album.getImage1();
 		this.artist_photo = artist.getImage1();
+	}
+	
+	public void setAttributes(int id_,String name_,String rn_,String art_,String alb_,String lrc_,String zone_,String pd_,String[] tag_,int dc_,int hc_,String url_,String cover_,String art_pho_){
+		this.id = id_;
+		this.name = name_;
+		this.realname = rn_;
+		this.artist = art_;
+		this.album = alb_;
+		this.lrc = lrc_;
+		this.zone = zone_;
+		this.publishdate = pd_;
+		this.tag = tag_;
+		this.down_count = dc_;
+		this.hit_count = hc_;
+		this.musicurl = url_;
+		this.cover = cover_;
+		this.artist_photo = art_pho_;
 	}
 	
 	//Tag special setters and getters

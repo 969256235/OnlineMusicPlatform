@@ -26,6 +26,16 @@ public class Artist {
 		this.gender = "";
 		this.del = 0;
 	}
+	
+	public void setAttributes(int id_,String name_,String image1_,String image2_,String dsp_,String cate_,String gender_){
+		this.id = id_;
+		this.name = name_;
+		this.image1 = image1_;
+		this.image2 = image2_;
+		this.description = dsp_;
+		this.category = cate_;
+		this.gender = gender_;
+	}
 
 	//Generated setters and getters
 	public int getId() {

@@ -21,12 +21,23 @@ public class Album {
 		this.id = 0;
 		this.art_id = 0;
 		this.name = "";
-		this.publishdate = null;
+		this.publishdate = "";
 		this.image1 = "";
 		this.image2 = "";
 		this.company = "";
 		this.description = "";
 		this.del = 0;
+	}
+	
+	public void setAttributes(int id_, int art_id_,String name_,String pd_,String image1_, String image2_,String com_,String dsp_){
+		this.id = id_;
+		this.art_id = art_id_;
+		this.name = name_;
+		this.publishdate = pd_;
+		this.image1 = image1_;
+		this.image2 = image2_;
+		this.company = com_;
+		this.description = dsp_;
 	}
 
 	//Generated setters and getters
