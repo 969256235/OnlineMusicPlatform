@@ -24,25 +24,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   
+  <script>
+    function audioSrc(){
+    	document.getElementById("mp3").pause();
+    }
+  </script>
+  
   <body>
-    <script type="text/javascript">
-    	var rank;
-    	$(function(){
-    		$.ajax({
-    		dataType: "json",
-    		contentType: "application/json; charset=utf-8",
-    		type: "GET",
-    		url: "",
-    		success: function(data, textStatus){
-    			rank = data.ranklist;
-    			}
-    		});
-    		for (var i = 0; i < 10; i++)
-    		{
-    			$("#rankTable").append("<tr><th>" + rank[0][i].name + "</th><th>" + rank[1][i].name + "</th><th>" + rank[2][i].name + "</th></tr>");
-    		}
-    	})
-    </script>
     <div class="titleBar">
       <div class="center">
         <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RuanKoMusic</a>
@@ -50,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a class="signor">or</a>
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
         <form action="" method="post">
-          <input type="submit" name="SearchSubmit" class="searchSub" value=" ">
+          <input type="submit" name="SearchSubmit" class="searchSub" value="">
           <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
         </form>
       </div>
@@ -67,7 +55,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <a href="" class="Lable">Classify</a>
       <p class="line">line1</p>
       <div>
-      	<table id="rankTable" border="1">
+      	<table id="rankTable">
+      	  <tr>
+      	    <th>HOTEST</th>
+      	    <th>NEWEST</th>
+      	    <th>
+      	  </tr>
+      	  <tr>
+      	    <th>${RankList[0]}<button class="musicbutton" onclick="audioSrc()">add</button></th>
+      	    <th class="middle">${RankList[1]}<button class="musicbutton">add</button></th>
+      	    <th>${RankList[2]}<button class="musicbutton">add</button></th>
+      	  </tr>
       	</table>
       </div>
     </div>

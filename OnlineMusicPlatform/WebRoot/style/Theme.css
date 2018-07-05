@@ -57,14 +57,15 @@ div.playerBar{
 	width: 2.1em;
 	margin-top: 1.5em;
 	margin-left: 0em;
-	padding: 0.25em;
+	padding: 0em;
 	font-family: Arial,Helvetica,sans-serif;
 	color: #808080;
 	border: 0.1em solid;
 	border-top-right-radius: 0.4em;
 	border-bottom-right-radius: 0.4em;
 	border-color: #808080;
-	background-color: white;
+	background: url(./search.png);
+	background-size: cover;
 }
 
 a.titleBar{

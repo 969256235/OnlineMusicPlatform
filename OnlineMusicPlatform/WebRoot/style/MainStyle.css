@@ -61,4 +61,31 @@ a.Lable{
 	font-weight: 700;
 }
 
+table{
+	float: left;
+	width: 948px;
+	margin: 5px 16px 0px 16px;
+	border-collapse: collapse;
+}
 
+th{
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 0.5em;
+	font-size: 1em;
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: 700;
+}
+
+th.middle{
+
+}
+
+.musicbutton{
+	display: block;
+	float: right;
+	height: 2em
+}

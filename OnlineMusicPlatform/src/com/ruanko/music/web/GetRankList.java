@@ -1,41 +1,29 @@
 package com.ruanko.music.web;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Servlet implementation class GetRankList
- */
-@WebServlet("/GetRankList")
-public class GetRankList extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GetRankList() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+import com.opensymphony.xwork2.ActionSupport;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+public class GetRankList extends ActionSupport {
+	
+	private List<String> RankList;
+	
+	public String execute() throws Exception {
+		
+		RankList = new ArrayList();
+		RankList.add("First");
+		RankList.add("Second");
+		RankList.add("Thrid");
+		return SUCCESS;
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	public List<String> getRankList() {
+		return RankList;
+	}
+
+	public void setRankList(List<String> rankList) {
+		RankList = rankList;
 	}
 
 }
