@@ -25,8 +25,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <script>
-    function audioSrc(){
-    	document.getElementById("mp3").pause();
+    var musicList = new Array();
+    function addMusic(musicAddress){
+    	musicList.push(musicAddress);
+    	document.getElementById("mlLength").innerHTML = musicList.length();
+    }
+    function nextMusic(audio){
+    	if (musicList.length > 0){
+    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/" + musicList.pop());
+    	}
     }
   </script>
   
@@ -45,26 +52,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div class="playerBar">
       <div class="center">
-        <audio controls style="height: 4em; margin: 0em 1.8em 0em 1.8em; width: 35em;" id="mp3">
-    	  <source src="${pageContext.servletContext.contextPath}/upload/201807021545.mp3" type="audio/mpeg" />
+        <p id="mlLength" class="text">0</p>
+        <audio controls style="display: block; height: 4em; margin: 0em 1.8em 0em 1.8em; width: 35em;" id="mp3" onended="nextMusic(this)" src="${pageContext.servletContext.contextPath}/upload/201807021545.mp3">
         </audio>
       </div>
     </div>
     <div class="bodycenter">
       <img src="${pageContext.servletContext.contextPath}/images/titleImg1.jpg" class="titleImg"/>
-      <a href="" class="Lable">Classify</a>
+      <a href="" class="Lable">RANK</a>
       <p class="line">line1</p>
       <div>
       	<table id="rankTable">
       	  <tr>
       	    <th>HOTEST</th>
-      	    <th>NEWEST</th>
-      	    <th>
+      	    <th>LATEST</th>
+      	    <th>OTHERS</th>
       	  </tr>
       	  <tr>
-      	    <th>${RankList[0]}<button class="musicbutton" onclick="audioSrc()">add</button></th>
-      	    <th class="middle">${RankList[1]}<button class="musicbutton">add</button></th>
-      	    <th>${RankList[2]}<button class="musicbutton">add</button></th>
+      	    <td class="firstImgs"><img src="${pageContext.servletContext.contextPath}/images/hotest.png" class="firstImg"/></td>
+      	    <td class="firstImgs"><img src="${pageContext.servletContext.contextPath}/images/newest.png" class="firstImg"/></td>
+      	    <td class="firstImgs"><img src="${pageContext.servletContext.contextPath}/images/hotest.png" class="firstImg"/></td>
+      	  </tr>
+      	  <tr>
+      	    <td>${RankList[0]}<button class="musicbutton" onclick="addMusic('${RankList[0]}')"></button></td>
+      	    <td>${RankList[1]}<button class="musicbutton"></button></td>
+      	    <td>${RankList[2]}<button class="musicbutton"></button></td>
       	  </tr>
       	</table>
       </div>
