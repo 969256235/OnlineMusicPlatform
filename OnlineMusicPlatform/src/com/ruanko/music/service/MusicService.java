@@ -117,49 +117,49 @@ public class MusicService {
 		Album album = new Album();
 		Popularity pop;
 		try{
-			int[] tag_ = {music_dao.getTagByName(mbm.getTag1()).getId(),music_dao.getTagByName(mbm.getTag2()).getId(),music_dao.getTagByName(mbm.getTag3()).getId()};
+			int[] tag_ = {music_dao.getTagByName(mbm.getTag1()).getTagId(),music_dao.getTagByName(mbm.getTag2()).getTagId(),music_dao.getTagByName(mbm.getTag3()).getTagId()};
 			//根据MusicBusiModel为music赋值
-			music.setAttributes(0, 0, 0, tag_, mbm.getName(), mbm.getRealname(), mbm.getLrc(), mbm.getZone(), mbm.getPublishdate(), mbm.getMusicurl());
+			music.setAttributes(0, 0, 0, tag_[0],tag_[1],tag_[2], mbm.getName(), mbm.getRealname(), mbm.getLrc(), mbm.getZone(), mbm.getPublishdate(), mbm.getMusicurl());
 			music.setDel(0);
 			
 			//查询该艺人是否存在
 			ArrayList<Artist> art_= music_dao.getArtistByName(mbm.getArtist());
 			if(art_.size() != 0){ //若存在则将艺人id设为查询到的id
-				music.setArt_id(art_.get(0).getId());
+				music.setArt_id(art_.get(0).getArtId());
 			}
 			else{ //否则创建新艺人
 				artist.setAttributes(0, mbm.getArtist(), mbm.getArtist_photo(), "", "", "", "");
-				artist.setId(music_dao.addArtist(artist));
+				artist.setArtId(music_dao.addArtist(artist));
 				pop = new Popularity();
-				pop.setAttributes(0, 2, artist.getId(), 0, 0);
+				pop.setAttributes(0, 2, artist.getArtId(), 0, 0);
 				music_dao.addPopularity(pop);
-				music.setArt_id(artist.getId());
+				music.setArt_id(artist.getArtId());
 			}
 			
 			//查询专辑是否存在
 			ArrayList<Album> alb_ = music_dao.getAlbumByName(mbm.getAlbum());
 			if(alb_.size() != 0){ //若存在则将专辑id设为查询到的id
-				music.setAlb_id(alb_.get(0).getId());
+				music.setAlb_id(alb_.get(0).getAlbId());
 			}
 			else{ //否则创建新专辑
 				album.setAttributes(0, music.getArt_id(), mbm.getAlbum(), mbm.getPublishdate(), mbm.getCover(), "", "", "");
-				album.setId(music_dao.addAlbum(album));
+				album.setAlbId(music_dao.addAlbum(album));
 				pop = new Popularity();
-				pop.setAttributes(0, 1, album.getId(), 0, 0);
+				pop.setAttributes(0, 1, album.getAlbId(), 0, 0);
 				music_dao.addPopularity(pop);
-				music.setAlb_id(album.getId());
+				music.setAlb_id(album.getAlbId());
 			}
 			
 			//添加音乐
 			music.setId(music_dao.addMusic(music)); 
 			pop = new Popularity();
-			pop.setAttributes(0, 3, music.getId(), 0, 0);
+			pop.setAttributes(0, 3, music.getMusId(), 0, 0);
 			music_dao.addPopularity(pop);
 			
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.addMusic");
 		}
-		return music.getId();	
+		return music.getMusId();	
 	}
 	
 	/**
@@ -186,34 +186,34 @@ public class MusicService {
 		Album album = new Album();
 		Popularity pop;
 		try{
-			int[] tag_ = {music_dao.getTagByName(mbm.getTag1()).getId(),music_dao.getTagByName(mbm.getTag2()).getId(),music_dao.getTagByName(mbm.getTag3()).getId()};
-			music.setAttributes(mbm.getId(), 0, 0, tag_, mbm.getName(), mbm.getRealname(), mbm.getLrc(), mbm.getZone(), mbm.getPublishdate(), mbm.getMusicurl());
+			int[] tag_ = {music_dao.getTagByName(mbm.getTag1()).getTagId(),music_dao.getTagByName(mbm.getTag2()).getTagId(),music_dao.getTagByName(mbm.getTag3()).getTagId()};
+			music.setAttributes(mbm.getId(), 0, 0, tag_[0],tag_[1],tag_[2], mbm.getName(), mbm.getRealname(), mbm.getLrc(), mbm.getZone(), mbm.getPublishdate(), mbm.getMusicurl());
 			music.setDel(0);
 			
 			//查询该艺人是否存在
 			ArrayList<Artist> art_= music_dao.getArtistByName(mbm.getArtist());
 			if(art_.size() == 0){ //若艺人不存在
 				artist.setAttributes(0, mbm.getArtist(), mbm.getArtist_photo(), "", "", "", "");
-				artist.setId(music_dao.addArtist(artist));
+				artist.setArtId(music_dao.addArtist(artist));
 				pop = new Popularity();
-				pop.setAttributes(0, 2, artist.getId(), 0, 0);
+				pop.setAttributes(0, 2, artist.getArtId(), 0, 0);
 				music_dao.addPopularity(pop);
-				music.setArt_id(artist.getId());
+				music.setArt_id(artist.getArtId());
 			}else{
-				music.setArt_id(art_.get(0).getId());
+				music.setArt_id(art_.get(0).getArtId());
 			}
 			
 			//查询专辑是否存在
 			ArrayList<Album> alb_ = music_dao.getAlbumByName(mbm.getAlbum());
 			if(alb_.size() == 0){ //若专辑不存在
 				album.setAttributes(0, music.getArt_id(), mbm.getAlbum(), mbm.getPublishdate(), mbm.getCover(), "", "", "");
-				album.setId(music_dao.addAlbum(album));
+				album.setAlbId(music_dao.addAlbum(album));
 				pop = new Popularity();
-				pop.setAttributes(0, 1, album.getId(), 0, 0);
+				pop.setAttributes(0, 1, album.getAlbId(), 0, 0);
 				music_dao.addPopularity(pop);
-				music.setAlb_id(album.getId());
+				music.setAlb_id(album.getAlbId());
 			}else{
-				music.setAlb_id(alb_.get(0).getId());
+				music.setAlb_id(alb_.get(0).getAlbId());
 			}
 			
 			music_dao.resetMusic(music);

@@ -42,7 +42,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = "V.A.";
@@ -61,7 +61,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Artist artist){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = artist.getName();
@@ -80,7 +80,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Album album){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = "V.A.";
@@ -99,7 +99,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Tag[] tag){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = "V.A.";
@@ -118,7 +118,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Artist artist, Album album){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = artist.getName();
@@ -137,7 +137,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Artist artist, Tag[] tag){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = artist.getName();
@@ -156,7 +156,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Album album, Tag[] tag){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = "V.A.";
@@ -175,7 +175,7 @@ public class MusicBusiModel {
 	}
 	
 	public MusicBusiModel(Music music, Popularity popularity, Artist artist, Album album, Tag[] tag){
-		this.id = music.getId();
+		this.id = music.getMusId();
 		this.name = music.getName();
 		this.realname = music.getRealname();
 		this.artist = artist.getName();

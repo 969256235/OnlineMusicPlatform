@@ -1,5 +1,9 @@
 package com.ruanko.music.dao.impl;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import com.ruanko.music.dao.MusicDao;
 import com.ruanko.music.model.Album;
@@ -9,6 +13,7 @@ import com.ruanko.music.model.MusicBusiModel;
 import com.ruanko.music.model.Popularity;
 import com.ruanko.music.model.Tag;
 import com.ruanko.music.utils.AppException;
+import com.ruanko.music.utils.DBUtil;
 
 /**
  * 音乐数据访问层实现类
@@ -17,9 +22,33 @@ public class MusicDaoImp implements MusicDao{
 
 	@Override
 	public ArrayList<MusicBusiModel> getMostPopMusic() throws AppException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;//声明数据库连接
+		PreparedStatement psmt = null;//声明预处理语句
+		ResultSet rs = null;//声明结果集合
+
+		//根据
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();//声明返回结果
+		try{
+			conn = DBUtil.getConnection();//获得数据库连接
+			String sql = "select popularity.hits_count,popularity.obj_id,music.mus_id,music.musicurl,music.name ,artist.name "
+					+"from popularity,music,artist"
+					+"where popularity.type = 3 "
+					+"and music.art_id = popularity.obj_id"
+					+"and where artist.id = music.art_id"
+					+"order by popularity.hits_count desc limit 10";
+			rs = psmt.executeQuery(sql);
+			System.out.println("执行sql语句");
+			while(rs.next()){
+				MusicBusiModel muisc = new MusicBusiModel();
+				System.out.println(rs.getInt(0));
+			}
+			
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+		return mbml;
 	}
+
 	
 	@Override
 	public ArrayList<MusicBusiModel> getNewestMusic() throws AppException {
