@@ -1,3 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Struts2Diagram version="2.0" />
+<Struts2Diagram version="2.0">
+  <package name="default" location="188,190" size="347,293">
+    <action name="GetRankList" location="93,45" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="main.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+    <action name="Search" location="96,133" size="150,62">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="search.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
+  </package>
+  <webResource name="main.jsp" path="/main.jsp" location="200,50" size="150,55" />
+  <webResource name="error.jsp" path="/error.jsp" location="350,50" size="150,55" />
+  <webResource name="search.jsp" path="/search.jsp" location="0,0" size="150,55" />
+</Struts2Diagram>
 

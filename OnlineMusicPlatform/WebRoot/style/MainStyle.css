@@ -27,12 +27,28 @@ p.rectangle{
 	padding: 0px;
 }
 
+p.text{
+	float: right;
+	display: block;
+	color: white;
+	text-align: center;
+	margin: 0px;
+	padding-top: 0.75em;
+	padding-bottom: 0.75em;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	text-decoration: none;
+	font-size: 1.5em;
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: 700;
+}
+
 .bodycenter{
 	width: 980px;
-	height: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 4em;
+	margin-bottom: 4em;
 	background-color: white;
 	border-color: #808080;
 	border: 1px;
@@ -46,6 +62,12 @@ p.rectangle{
 	margin: 16px 16px 0px 16px;
 }
 
+.firstImg{
+	float: left;
+	width: 290px;
+	height: 290px;
+}
+
 a.Lable{
 	float: left;
 	display: block;
@@ -54,11 +76,50 @@ a.Lable{
 	padding-top: 1.5em;
 	padding-bottom: 0.1em;
 	padding-right: 0.25em;
-	padding-left: 1.8em;
+	padding-left: 1.4em;
 	text-decoration: none;
+	font-size: 1.5em;
+	font-family: Arial,Helvetica,sans-serif;
+	font-weight: 700;
+}
+
+table{
+
+	width: 948px;
+	margin: 5px 16px 0px 16px;
+	border-collapse: collapse;
+}
+
+th{
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 1em;
+	padding-right: 1em;
 	font-size: 1em;
 	font-family: Arial,Helvetica,sans-serif;
 	font-weight: 700;
 }
 
+td{
+	display: block;
+	text-align: left;
+	text-decoration: none;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	font-size: 1.5em;
+}
 
+.musicbutton{
+	display: block;
+	float: right;
+	width: 2em;
+	height: 2em;
+	background: url(./add.png);
+	background-size: cover;
+	border: none;
+}

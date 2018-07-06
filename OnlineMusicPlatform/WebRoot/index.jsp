@@ -22,6 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
     This is my JSP page. <br>
-    <% pageContext.forward("/main.jsp"); %>
+    <script>
+      window.location.replace("http://localhost:8080/OnlineMusicPlatform/GetRankList");
+    </script>
   </body>
 </html>

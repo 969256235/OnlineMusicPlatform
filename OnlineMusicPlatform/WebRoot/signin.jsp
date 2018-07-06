@@ -36,12 +36,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
       </div>
     </div>
-    <div class="playerBar">
-      <div class="center">
-        <audio controls style="height: 4em; margin: 0em 1.8em 0em 1.8em; width: 35em;">
-    	  <source src="${pageContext.servletContext.contextPath}/upload/201807021545.mp3" type="audio/mpeg" />
-        </audio>
-      </div>
-    </div>
   </body>
 </html>
