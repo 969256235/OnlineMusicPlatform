@@ -18,7 +18,7 @@ public class UserDaoImp implements UserDao{
 	@Override
 	public boolean isExist(String account) throws AppException {
 		//1.声明flag
-		boolean flag = true;
+		boolean flag = false;
 		//2.声明数据库访问的对象
 		Connection conn = null;//连接声明
 		PreparedStatement psmt = null;//预处理语句声明
