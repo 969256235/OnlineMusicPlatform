@@ -42,7 +42,10 @@ public class UserService {
 		boolean flag = false;
 		try{
 			if(!this.isExist(user)){
+				System.out.println("账户未被注册");
 				flag = user_dao.save(user);
+				//flag=true则操作成功
+				System.out.print("注册操作flag:"+flag);
 			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.register");
@@ -65,4 +68,5 @@ public class UserService {
 		}
 		return nickname;
 	}
+	
 }

@@ -36,6 +36,36 @@ public class MusicService {
 		}		
 		return mbml;
 	}
+	
+	/**
+	 * 获取最新的十首歌
+	 * @return 包含十个MusicBusiModel的List
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getNewestMusic() throws AppException{
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
+		try{
+			mbml = music_dao.getNewestMusic();
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
+		}		
+		return mbml;
+	}
+	
+	/**
+	 * 获取随机的十首歌
+	 * @return 包含十个MusicBusiModel的List
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getRandomMusic() throws AppException{
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
+		try{
+			mbml = music_dao.getRandomMusic();
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
+		}		
+		return mbml;
+	}
 
 	/**
 	 * 通过Id搜索歌曲
@@ -61,7 +91,7 @@ public class MusicService {
 	 * @throws AppException
 	 */
 	public ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
-		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
+		ArrayList<MusicBusiModel> mbml;
 		try{
 			switch(type){
 			case 0:mbml = music_dao.getMusicByName(content);break;
@@ -157,6 +187,8 @@ public class MusicService {
 		Popularity pop;
 		try{
 			int[] tag_ = {music_dao.getTagByName(mbm.getTag1()).getId(),music_dao.getTagByName(mbm.getTag2()).getId(),music_dao.getTagByName(mbm.getTag3()).getId()};
+			music.setAttributes(mbm.getId(), 0, 0, tag_, mbm.getName(), mbm.getRealname(), mbm.getLrc(), mbm.getZone(), mbm.getPublishdate(), mbm.getMusicurl());
+			music.setDel(0);
 			
 			//查询该艺人是否存在
 			ArrayList<Artist> art_= music_dao.getArtistByName(mbm.getArtist());
@@ -167,6 +199,8 @@ public class MusicService {
 				pop.setAttributes(0, 2, artist.getId(), 0, 0);
 				music_dao.addPopularity(pop);
 				music.setArt_id(artist.getId());
+			}else{
+				music.setArt_id(art_.get(0).getId());
 			}
 			
 			//查询专辑是否存在
@@ -178,8 +212,11 @@ public class MusicService {
 				pop.setAttributes(0, 1, album.getId(), 0, 0);
 				music_dao.addPopularity(pop);
 				music.setAlb_id(album.getId());
+			}else{
+				music.setAlb_id(alb_.get(0).getId());
 			}
 			
+			music_dao.resetMusic(music);
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.resetMusic");
 		}

@@ -20,7 +20,19 @@ public class MusicDaoImp implements MusicDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public ArrayList<MusicBusiModel> getNewestMusic() throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
+	@Override
+	public ArrayList<MusicBusiModel> getRandomMusic() throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public MusicBusiModel getMusicById(String Id) throws AppException {
 		// TODO Auto-generated method stub
@@ -69,6 +81,12 @@ public class MusicDaoImp implements MusicDao{
 		return null;
 	}
 
+	@Override
+	public Tag getTagById(String Id) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public Tag getTagByName(String name) throws AppException {
 		// TODO Auto-generated method stub

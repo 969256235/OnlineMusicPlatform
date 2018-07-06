@@ -22,6 +22,20 @@ public interface MusicDao {
 	public ArrayList<MusicBusiModel> getMostPopMusic() throws AppException;
 	
 	/**
+	 * 获取最新十首歌
+	 * @return 包含十个MusicBusiModel的List
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getNewestMusic() throws AppException;
+	
+	/**
+	 * 获取随机十首歌
+	 * @return 包含十个MusicBusiModel的List
+	 * @throws AppException
+	 */
+	public ArrayList<MusicBusiModel> getRandomMusic() throws AppException;
+	
+	/**
 	 * 通过Id搜索歌曲
 	 * @param 歌曲id
 	 * @return MusicBusiModel
@@ -84,6 +98,14 @@ public interface MusicDao {
 	 * @throws AppException
 	 */
 	public ArrayList<Album> getAlbumByName(String name) throws AppException;
+	
+	/**
+	 * 按id搜索标签
+	 * @param Id
+	 * @return 返回符合条件的标签
+	 * @throws AppException
+	 */
+	public Tag getTagById(String Id) throws AppException;
 	
 	/**
 	 * 按名字搜索标签
