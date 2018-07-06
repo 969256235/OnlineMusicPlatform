@@ -12,7 +12,7 @@ public class GetRankList extends ActionSupport {
 	public String execute() throws Exception {
 		
 		RankList = new ArrayList();
-		RankList.add("First");
+		RankList.add("201807060919.mp3");
 		RankList.add("Second");
 		RankList.add("Thrid");
 		return SUCCESS;

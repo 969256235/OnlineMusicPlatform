@@ -6,4 +6,8 @@
 		<action name="GetRankList"
 			class="com.ruanko.music.web.GetRankList">
 			<result name="success">/main.jsp</result>
-			<result name="error">/error.jsp</result></action></package></struts>    
+			<result name="error">/error.jsp</result></action>
+		<action name="Search" class="com.ruanko.music.web.Search">
+			<result name="success">/search.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action></package></struts>    

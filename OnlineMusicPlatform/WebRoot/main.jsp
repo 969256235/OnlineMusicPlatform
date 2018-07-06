@@ -28,11 +28,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     var musicList = new Array();
     function addMusic(musicAddress){
     	musicList.push(musicAddress);
-    	document.getElementById("mlLength").innerHTML = musicList.length();
+    	document.getElementById("mlLength").innerHTML = musicList.length;
     }
     function nextMusic(audio){
     	if (musicList.length > 0){
-    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/" + musicList.pop());
+    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/upload/" + musicList.pop());
+    		audio.play();
+    		document.getElementById("mlLength").innerHTML = musicList.length;
     	}
     }
   </script>
@@ -66,7 +68,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  <tr>
       	    <th>HOTEST</th>
       	    <th>LATEST</th>
-      	    <th>OTHERS</th>
+      	    <th>RECOMMEND</th>
       	  </tr>
       	  <tr>
       	    <td class="firstImgs"><img src="${pageContext.servletContext.contextPath}/images/hotest.png" class="firstImg"/></td>
@@ -75,8 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  </tr>
       	  <tr>
       	    <td>${RankList[0]}<button class="musicbutton" onclick="addMusic('${RankList[0]}')"></button></td>
-      	    <td>${RankList[1]}<button class="musicbutton"></button></td>
-      	    <td>${RankList[2]}<button class="musicbutton"></button></td>
+      	    <td>${RankList[1]}<button class="musicbutton" onclick="addMusic('${RankList[1]}')"></button></td>
+      	    <td>${RankList[2]}<button class="musicbutton" onclick="addMusic('${RankList[2]}')"></button></td>
       	  </tr>
       	</table>
       </div>
