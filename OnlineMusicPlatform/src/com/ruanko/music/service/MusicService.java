@@ -222,4 +222,30 @@ public class MusicService {
 		}
 	}
 	
+	/**
+	 * 修改艺人信息
+	 * @param artist
+	 * @throws AppException
+	 */
+	public void resetArtist(Artist artist) throws AppException{
+		try{
+			music_dao.resetAritist(artist);
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.resetArtist");
+		}
+	}
+	
+	/**
+	 * 修改专辑信息
+	 * @param artist
+	 * @throws AppException
+	 */
+	public void resetArtist(Album album) throws AppException{
+		try{
+			music_dao.resetAlbum(album);
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.resetAlbum");
+		}
+	}
+	
 }

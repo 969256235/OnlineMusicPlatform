@@ -18,3 +18,5 @@ OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/web/GetRankList.cla
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/utils/AppException.class
 *.class
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/model/Music.class
+OnlineMusicPlatform/src/com/ruanko/music/utils/DBUtil.java
+OnlineMusicPlatform/src/com/ruanko/music/utils/DBUtil.java

@@ -129,4 +129,16 @@ public class MusicDaoImp implements MusicDao{
 		return false;
 	}
 
+	@Override
+	public void resetAritist(Artist artist) throws AppException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void resetAlbum(Album album) throws AppException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

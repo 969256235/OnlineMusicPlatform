@@ -160,4 +160,18 @@ public interface MusicDao {
 	 * @throws AppException
 	 */
 	public boolean resetMusic(Music music) throws AppException;
+	
+	/**
+	 * 修改艺人信息
+	 * @param artist
+	 * @throws AppException
+	 */
+	public void resetAritist(Artist artist) throws AppException;
+	
+	/**
+	 * 修改专辑信息
+	 * @param album
+	 * @throws AppException
+	 */
+	public void resetAlbum(Album album) throws AppException;
 }
