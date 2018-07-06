@@ -10,7 +10,8 @@ public class Search extends ActionSupport {
 	private List<String> SearchList;
 	
 	public String execute() throws Exception {
-		
+		SearchList = new ArrayList<String>();
+		SearchList.add("0001");
 		return SUCCESS;
 		
 	}

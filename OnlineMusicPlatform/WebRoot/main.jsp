@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="${pageContext.servletContext.contextPath}/signup.jsp" class="signright">Sign up</a>
         <a class="signor">or</a>
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
-        <form action="" method="post">
+        <form action="/OnlineMusicPlatform/Search" method="post">
           <input type="submit" name="SearchSubmit" class="searchSub" value="">
           <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
         </form>
