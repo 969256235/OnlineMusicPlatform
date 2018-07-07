@@ -52,7 +52,7 @@ public interface MusicDao {
 	public ArrayList<MusicBusiModel> getMusicByName(String name) throws AppException;
 	
 	/**
-	 * 通过歌曲名搜索获取歌曲列表
+	 * 通过歌手名搜索获取歌曲列表
 	 * @param art_name
 	 * @return 符合条件的MusiBusiModel数组
 	 * @throws AppException
@@ -60,7 +60,7 @@ public interface MusicDao {
 	public ArrayList<MusicBusiModel> getMusicByArtist(String art_name) throws AppException;
 	
 	/**
-	 * 通过歌曲名搜索获取歌曲列表
+	 * 通过专辑名搜索获取歌曲列表
 	 * @param alb_name
 	 * @return 符合条件的MusiBusiModel数组
 	 * @throws AppException

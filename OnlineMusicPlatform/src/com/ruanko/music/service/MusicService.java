@@ -86,23 +86,27 @@ public class MusicService {
 	/**
 	 * 搜索歌曲
 	 * @param content 搜索字段
-	 * @param type 0-按歌曲名搜索；1-按歌手名搜索；2-按专辑名搜索
+	 * @param type 0-按歌曲名搜索；1-按歌手名搜索；2-按专辑名搜索；3-歌名、歌手、专辑
 	 * @return 符合条件的歌曲列表
 	 * @throws AppException
 	 */
 	public ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
 		ArrayList<MusicBusiModel> mbml;
 		try{
-			switch(type){
-			case 0:mbml = music_dao.getMusicByName(content);break;
-			case 1:mbml = music_dao.getMusicByArtist(content);break;
-			case 2:mbml = music_dao.getMusicByAlbum(content);break;
-			default:mbml = null;break;
+			mbml = new ArrayList<MusicBusiModel>();
+			if(type == 0 || type == 3){
+				mbml.addAll(music_dao.getMusicByName(content));
+			}
+			if(type == 1 || type == 3){
+				mbml.addAll(music_dao.getMusicByArtist(content));
+			}
+			if(type == 2 || type ==3){
+				mbml.addAll(music_dao.getMusicByAlbum(content));
 			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMusicByContent");
 		}
-		return mbml;		
+		return mbml;
 	}
 	
 	/**

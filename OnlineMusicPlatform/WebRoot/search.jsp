@@ -36,5 +36,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </form>
       </div>
     </div>
+    <div class="bodycenter">
+      <a href="" class="Lable">RESULT</a>
+      <p class="line">line1</p>
+      <div>
+      	<table id="rankTable">
+      	<script>
+      	  var str = '';
+      	  for (var i=0;i<${SearchList.length};i++){
+      	  	str = str + '<tr><td>&{SearchList[' + i.toString() +']}</td></tr>' + '<button class="musicbutton">'
+      	  }
+      	</script>
+      	  <tr>
+      	    <td>${RankList[0]}<button class="musicbutton" onclick="addMusic('${RankList[0]}')"></button></td>
+      	    <td>${RankList[1]}<button class="musicbutton" onclick="addMusic('${RankList[1]}')"></button></td>
+      	    <td>${RankList[2]}<button class="musicbutton" onclick="addMusic('${RankList[2]}')"></button></td>
+      	  </tr>
+      	</table>
+      </div>
+    </div>
   </body>
 </html>

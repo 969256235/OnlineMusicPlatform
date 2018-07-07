@@ -11,7 +11,9 @@ public class Search extends ActionSupport {
 	
 	public String execute() throws Exception {
 		SearchList = new ArrayList<String>();
-		SearchList.add("0001");
+		SearchList.add("Fitst");
+		SearchList.add("Second");
+		SearchList.add("Third");
 		return SUCCESS;
 		
 	}
