@@ -31,6 +31,9 @@ public class MusicService {
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getMostPopMusic();
+			if(mbml == null){
+				mbml = new ArrayList<MusicBusiModel>();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
@@ -46,6 +49,9 @@ public class MusicService {
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getNewestMusic();
+			if(mbml == null){
+				mbml = new ArrayList<MusicBusiModel>();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
@@ -61,6 +67,9 @@ public class MusicService {
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getRandomMusic();
+			if(mbml == null){
+				mbml = new ArrayList<MusicBusiModel>();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
@@ -77,32 +86,51 @@ public class MusicService {
 		MusicBusiModel mbm = new MusicBusiModel();
 		try{
 			mbm = music_dao.getMusicById(id);
+			if(mbm == null){
+				mbm = new MusicBusiModel();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMusicById");
 		}
-				return mbm;		
+		return mbm;		
 	}
 	
 	/**
 	 * 搜索歌曲
 	 * @param content 搜索字段
-	 * @param type 0-按歌曲名搜索；1-按歌手名搜索；2-按专辑名搜索
+	 * @param type 0-按歌曲名搜索；1-按歌手名搜索；2-按专辑名搜索；3-歌名、歌手、专辑
 	 * @return 符合条件的歌曲列表
 	 * @throws AppException
 	 */
 	public ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
-		ArrayList<MusicBusiModel> mbml;
+		ArrayList<MusicBusiModel> mbml_temp,mbml;
 		try{
-			switch(type){
-			case 0:mbml = music_dao.getMusicByName(content);break;
-			case 1:mbml = music_dao.getMusicByArtist(content);break;
-			case 2:mbml = music_dao.getMusicByAlbum(content);break;
-			default:mbml = null;break;
+			mbml = new ArrayList<MusicBusiModel>();
+			if(type == 0 || type == 3){
+				mbml_temp = new ArrayList<MusicBusiModel>();
+				mbml_temp = music_dao.getMusicByName(content);
+				if(mbml_temp != null){
+					mbml.addAll(mbml_temp);
+				}
+			}
+			if(type == 1 || type == 3){
+				mbml_temp = new ArrayList<MusicBusiModel>();
+				mbml_temp = music_dao.getMusicByArtist(content);
+				if(mbml_temp != null){
+					mbml.addAll(mbml_temp);
+				}
+			}
+			if(type == 2 || type ==3){
+				mbml_temp = new ArrayList<MusicBusiModel>();
+				mbml_temp = music_dao.getMusicByAlbum(content);
+				if(mbml_temp != null){
+					mbml.addAll(mbml_temp);
+				}
 			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMusicByContent");
 		}
-		return mbml;		
+		return mbml;
 	}
 	
 	/**
