@@ -20,3 +20,7 @@ OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/utils/AppException.
 OnlineMusicPlatform/WebRoot/WEB-INF/classes/com/ruanko/music/model/Music.class
 OnlineMusicPlatform/src/com/ruanko/music/utils/DBUtil.java
 OnlineMusicPlatform/src/com/ruanko/music/utils/DBUtil.java
+OnlineMusicPlatform/WebRoot/login.jsp
+OnlineMusicPlatform/WebRoot/login-check.jsp
+OnlineMusicPlatform/WebRoot/reg-submit.jsp
+OnlineMusicPlatform/WebRoot/reg.jsp
