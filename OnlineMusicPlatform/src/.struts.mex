@@ -17,9 +17,18 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
+    <action name="SingleMusic" location="96,213" size="150,63">
+      <result name="success">
+        <resourceEdge source="success" routing="0" target="PlayPage.jsp" />
+      </result>
+      <result name="error">
+        <resourceEdge source="error" routing="0" target="error.jsp" />
+      </result>
+    </action>
   </package>
   <webResource name="main.jsp" path="/main.jsp" location="200,50" size="150,55" />
-  <webResource name="error.jsp" path="/error.jsp" location="350,50" size="150,55" />
-  <webResource name="search.jsp" path="/search.jsp" location="0,0" size="150,55" />
+  <webResource name="error.jsp" path="/error.jsp" location="450,53" size="150,55" />
+  <webResource name="search.jsp" path="/search.jsp" location="17,218" size="150,55" />
+  <webResource name="PlayPage.jsp" path="/PlayPage.jsp" location="8,403" size="150,55" />
 </Struts2Diagram>
 

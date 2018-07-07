@@ -1,4 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,6 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <link rel="stylesheet" type="text/css" href="style/Theme.css">
+    <link rel="stylesheet" type="text/css" href="style/MainStyle.css">
     
     <title>My JSP 'search.jsp' starting page</title>
     
@@ -26,14 +29,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="titleBar">
       <div class="center">
-        <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">${SearchList[0]}</a>
+        <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RankoMusic</a>
         <a href="${pageContext.servletContext.contextPath}/signup.jsp" class="signright">Sign up</a>
         <a class="signor">or</a>
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
-        <form action="" method="post">
+        <form action="/OnlineMusicPlatform/Search" method="post">
           <input type="submit" name="SearchSubmit" class="searchSub" value="">
           <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
         </form>
+      </div>
+    </div>
+    <div class="bodycenter">
+      <a href="" class="Lable">RESULT</a>
+      <p class="line">line1</p>
+      <div>
+      	<table id="resultTable">
+      	  <c:forEach var="result" items="${SearchList}">
+      	  <tr>
+      	    <td><c:out value="${result}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${result}"><button class="musicbutton"></button></a></td>
+      	  </tr>
+      	  </c:forEach>
+      	</table>
       </div>
     </div>
   </body>
