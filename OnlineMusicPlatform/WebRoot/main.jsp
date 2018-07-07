@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -75,11 +77,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	    <td class="firstImgs"><img src="${pageContext.servletContext.contextPath}/images/newest.png" class="firstImg"/></td>
       	    <td class="firstImgs"><img src="${pageContext.servletContext.contextPath}/images/hotest.png" class="firstImg"/></td>
       	  </tr>
+      	  <c:forEach var="rank" items="${RankList}">
       	  <tr>
-      	    <td>${RankList[0]}<button class="musicbutton" onclick="addMusic('${RankList[0]}')"></button></td>
-      	    <td>${RankList[1]}<button class="musicbutton" onclick="addMusic('${RankList[1]}')"></button></td>
-      	    <td>${RankList[2]}<button class="musicbutton" onclick="addMusic('${RankList[2]}')"></button></td>
+      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="addMusic('${rank[0].realname}')"></button></td>
+      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="addMusic('${rank[1].realname}')"></button></td>
+      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="addMusic('${rank[2].realname}')"></button></td>
       	  </tr>
+      	  </c:forEach>
       	</table>
       </div>
     </div>
