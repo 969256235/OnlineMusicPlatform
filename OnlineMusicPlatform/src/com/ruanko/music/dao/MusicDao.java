@@ -174,4 +174,12 @@ public interface MusicDao {
 	 * @throws AppException
 	 */
 	public void resetAlbum(Album album) throws AppException;
+	
+	/**
+	 * 根据文件名获取音乐模型
+	 * @param realname
+	 * @return MusicBusiModel
+	 * @throws AppException
+	 */
+	public MusicBusiModel getMusicByRealname(String realname) throws AppException;
 }

@@ -276,4 +276,23 @@ public class MusicService {
 		}
 	}
 	
+	/**
+	 * 根据文件名获取音乐模型
+	 * @param realname
+	 * @return MusicBusiModel
+	 * @throws AppException
+	 */
+	public MusicBusiModel getMusicByRealname(String realname) throws AppException{
+		MusicBusiModel mbm = new MusicBusiModel();
+		try{
+			mbm = music_dao.getMusicByRealname(realname);
+			if(mbm == null){
+				mbm = new MusicBusiModel();
+			}
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.getMusicByRealname");
+		}
+		return mbm;	
+	}
+	
 }

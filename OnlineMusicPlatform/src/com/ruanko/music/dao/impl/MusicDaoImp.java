@@ -170,4 +170,11 @@ public class MusicDaoImp implements MusicDao{
 		
 	}
 
+
+	@Override
+	public MusicBusiModel getMusicByRealname(String realname) throws AppException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
