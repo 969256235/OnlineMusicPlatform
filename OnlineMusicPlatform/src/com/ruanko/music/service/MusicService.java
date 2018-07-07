@@ -91,17 +91,29 @@ public class MusicService {
 	 * @throws AppException
 	 */
 	public ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
-		ArrayList<MusicBusiModel> mbml;
+		ArrayList<MusicBusiModel> mbml_temp,mbml;
 		try{
 			mbml = new ArrayList<MusicBusiModel>();
 			if(type == 0 || type == 3){
-				mbml.addAll(music_dao.getMusicByName(content));
+				mbml_temp = new ArrayList<MusicBusiModel>();
+				mbml_temp = music_dao.getMusicByName(content);
+				if(mbml_temp != null){
+					mbml.addAll(mbml_temp);
+				}
 			}
 			if(type == 1 || type == 3){
-				mbml.addAll(music_dao.getMusicByArtist(content));
+				mbml_temp = new ArrayList<MusicBusiModel>();
+				mbml_temp = music_dao.getMusicByArtist(content);
+				if(mbml_temp != null){
+					mbml.addAll(mbml_temp);
+				}
 			}
 			if(type == 2 || type ==3){
-				mbml.addAll(music_dao.getMusicByAlbum(content));
+				mbml_temp = new ArrayList<MusicBusiModel>();
+				mbml_temp = music_dao.getMusicByAlbum(content);
+				if(mbml_temp != null){
+					mbml.addAll(mbml_temp);
+				}
 			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMusicByContent");
