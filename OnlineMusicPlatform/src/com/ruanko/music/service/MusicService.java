@@ -31,6 +31,9 @@ public class MusicService {
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getMostPopMusic();
+			if(mbml == null){
+				mbml = new ArrayList<MusicBusiModel>();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
@@ -46,6 +49,9 @@ public class MusicService {
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getNewestMusic();
+			if(mbml == null){
+				mbml = new ArrayList<MusicBusiModel>();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
@@ -61,6 +67,9 @@ public class MusicService {
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getRandomMusic();
+			if(mbml == null){
+				mbml = new ArrayList<MusicBusiModel>();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMostPopMusic");
 		}		
@@ -77,10 +86,13 @@ public class MusicService {
 		MusicBusiModel mbm = new MusicBusiModel();
 		try{
 			mbm = music_dao.getMusicById(id);
+			if(mbm == null){
+				mbm = new MusicBusiModel();
+			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.getMusicById");
 		}
-				return mbm;		
+		return mbm;		
 	}
 	
 	/**
