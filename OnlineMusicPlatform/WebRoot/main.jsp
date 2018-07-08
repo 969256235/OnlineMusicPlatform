@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <div class="center">
         <p id="mlLength" class="text">0</p>
         <button class="muslis" onclick="musiclistopen()"></button>
-        <audio controls style="display: block; height: 4em; margin: 0em 1.8em 0em 1.8em; width: 35em;" id="mp3" onended="nextMusic(this)" src="${pageContext.servletContext.contextPath}/upload/201807021545.mp3">
+        <audio controls style="display: block; height: 4em; margin: 0em 1.8em 0em 1.8em; width: 35em;" id="mp3" onended="nextMusic(this)" src="${pageContext.servletContext.contextPath}/upload/20180704000001.mp3">
         </audio>
       </div>
     </div>
@@ -110,9 +110,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  </tr>
       	  <c:forEach var="rank" items="${RankList}">
       	  <tr>
-      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="addMusic('${rank[0].name}','${rank[0].musicurl}')"></button></td>
-      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="addMusic('${rank[1].name}','${rank[1].musicurl}')"></button></td>
-      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="addMusic('${rank[2].name}','${rank[2].musicurl}')"></button></td>
+      	    <td><a class="tds" href="/OnlineMusicPlatform/SingleMusic?musicname=${rank[0].name}"><c:out value="${rank[0].name}"/></a>><button class="musicbutton" onclick="addMusic('${rank[0].name}','${rank[0].musicurl}')"></button></td>
+      	    <td><a class="tds" href="/OnlineMusicPlatform/SingleMusic?musicname=${rank[1].name}"><c:out value="${rank[1].name}"/></a><button class="musicbutton" onclick="addMusic('${rank[1].name}','${rank[1].musicurl}')"></button></td>
+      	    <td><a class="tds" href="/OnlineMusicPlatform/SingleMusic?musicname=${rank[2].name}"><c:out value="${rank[2].name}"/></a><button class="musicbutton" onclick="addMusic('${rank[2].name}','${rank[2].musicurl}')"></button></td>
       	  </tr>
       	  </c:forEach>
       	</table>
