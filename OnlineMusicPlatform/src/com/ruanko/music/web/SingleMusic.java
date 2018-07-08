@@ -20,5 +20,13 @@ public class SingleMusic extends ActionSupport {
 		
 		return SUCCESS;
 	}
+
+	public MusicBusiModel getMusic() {
+		return music;
+	}
+
+	public void setMusic(MusicBusiModel music) {
+		this.music = music;
+	}
 	
 }
