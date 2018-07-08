@@ -187,3 +187,15 @@ p.ml{
 	background: url(./close.png);
 	background-size: cover;
 }
+
+.deletButton{
+	float: right;
+	height: 1.7em;
+	width: 1.7em;
+	margin-top: 0.5em;
+	margin-right: 36em;
+	padding: 0em;
+	border: 0px;
+	background: url(./delet.png);
+	background-size: cover;
+}

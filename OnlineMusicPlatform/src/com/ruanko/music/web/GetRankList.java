@@ -27,7 +27,7 @@ public class GetRankList extends ActionSupport {
 			line.add(RecomList.get(i));
 			RankList.add(line);
 		}
-		
+
 		return SUCCESS;
 	}
 
