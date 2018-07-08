@@ -99,8 +99,28 @@ public class UserDaoImp implements UserDao{
 
 	@Override
 	public String login(String account, String password) throws AppException {
-		// TODO Auto-generated method stub
-		return null;
+		String nickname = "";// 声明返回的字符串对象
+		Connection conn = null;//声明数据库连接对象
+		PreparedStatement psmt = null;//声明预处理语句对象
+		ResultSet rs = null;//声明返回集合对象
+		
+		try {
+			conn = DBUtil.getConnection();//连接数据库
+			String sql = "select * from user where account = '" + account + "' and password = '" + password + "'";
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			if(rs.next()){
+				nickname = rs.getString(4);
+			}
+			//关闭相关对象
+			DBUtil.closeResultSet(rs);
+			DBUtil.closeStatement(psmt);
+			DBUtil.closeConnection(conn);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return nickname;
 	}
 
 }
