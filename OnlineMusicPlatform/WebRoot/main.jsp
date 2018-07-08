@@ -28,20 +28,49 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <script>
     var musicList = new Array();
-    function addMusic(musicAddress){
-    	musicList.push(musicAddress);
+    function addMusic(musicname,musicAddress){
+    	musicList.push([musicname,musicAddress]);
     	document.getElementById("mlLength").innerHTML = musicList.length;
     }
     function nextMusic(audio){
     	if (musicList.length > 0){
-    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/upload/" + musicList.pop());
+    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/upload/" + musicList.pop()[1]);
     		audio.play();
     		document.getElementById("mlLength").innerHTML = musicList.length;
     	}
     }
+    function musiclistopen(){
+    	document.getElementById("floatbox").style.display="flex";
+    	var str='';
+    	for (var i = 0; i < musicList.length; i++){
+    		str = str + '<tr><td>' + musicList[i][1] + '<button onclick="musicdelet(' + i.toString() + ')">Delet</button></td></tr>';
+    	}
+    	document.getElementById("musicLists").innerHTML = str;
+    }
+    function musiclistclose(){
+    	document.getElementById("floatbox").style.display="none";
+    }
+    function musicdelet(index){
+    	musicList.splice(index,1);
+    	var str='';
+    	for (var i = 0; i < musicList.length; i++){
+    		str = str + '<tr><td>' + musicList[i][1] + '<button onclick="">Delet</button></td></tr>';
+    	}
+    	document.getElementById("musicLists").innerHTML = str;
+    }
   </script>
   
   <body>
+    <div id="floatbox" class="back">
+      <div class="box">
+        <div class="boxbar">
+          <p class="ml">MusicList</p>
+          <button class="closeButton" onclick="musiclistclose()"></button>
+        </div>
+        <table id="musicLists">
+        </table>
+      </div>
+    </div>
     <div class="titleBar">
       <div class="center">
         <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RuanKoMusic</a>
@@ -57,6 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="playerBar">
       <div class="center">
         <p id="mlLength" class="text">0</p>
+        <button class="muslis" onclick="musiclistopen()"></button>
         <audio controls style="display: block; height: 4em; margin: 0em 1.8em 0em 1.8em; width: 35em;" id="mp3" onended="nextMusic(this)" src="${pageContext.servletContext.contextPath}/upload/201807021545.mp3">
         </audio>
       </div>
@@ -79,9 +109,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  </tr>
       	  <c:forEach var="rank" items="${RankList}">
       	  <tr>
-      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="addMusic('${rank[0].realname}')"></button></td>
-      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="addMusic('${rank[1].realname}')"></button></td>
-      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="addMusic('${rank[2].realname}')"></button></td>
+      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="addMusic('${rank[0].name}','${rank[0].realname}')"></button></td>
+      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="addMusic('${rank[1].name}','${rank[1].realname}')"></button></td>
+      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="addMusic('${rank[2].name}','${rank[2].realname}')"></button></td>
       	  </tr>
       	  </c:forEach>
       	</table>

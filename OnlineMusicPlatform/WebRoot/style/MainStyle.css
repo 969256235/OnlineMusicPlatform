@@ -38,9 +38,21 @@ p.text{
 	padding-right: 0.5em;
 	padding-left: 0.5em;
 	text-decoration: none;
-	font-size: 1.5em;
+	font-size: 1em;
 	font-family: Arial,Helvetica,sans-serif;
 	font-weight: 700;
+}
+
+button.muslis{
+	float: right;
+	height: 1.7em;
+	width: 1.7em;
+	margin-top: 1.5em;
+	margin-right: 0em;
+	padding: 0em;
+	border: 0px;
+	background: url(./musiclist.png);
+	background-size: cover;
 }
 
 .bodycenter{

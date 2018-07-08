@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.ruanko.music.model.MusicBusiModel;
+import com.ruanko.music.service.MusicService;
 
 public class GetRankList extends ActionSupport {
 	
@@ -13,22 +14,19 @@ public class GetRankList extends ActionSupport {
 	public String execute() throws Exception {
 		
 		RankList = new ArrayList();
+		MusicService ms =  new MusicService();
 		
-		MusicBusiModel first = new MusicBusiModel();
-		first.setAttributes(0, "First", "201807021545.mp3", "", "", "", "", "", null, 0, 0, "", "", "");
+		List<MusicBusiModel> HotestList = ms.getMostPopMusic();
+		List<MusicBusiModel> NewestList = ms.getNewestMusic();
+		List<MusicBusiModel> RecomList = ms.getRandomMusic();
 		
-		MusicBusiModel second = new MusicBusiModel();
-		second.setAttributes(0, "Second", "201807060919.mp3", "", "", "", "", "", null, 0, 0, "", "", "");
-		
-		MusicBusiModel third = new MusicBusiModel();
-		third.setAttributes(0, "Third", "201807021545.mp3", "", "", "", "", "", null, 0, 0, "", "", "");
-		
-		List<MusicBusiModel> line = new ArrayList();
-		line.add(first);
-		line.add(second);
-		line.add(third);
-		
-		RankList.add(line);
+		for (int i = 0; i < HotestList.size(); i++){
+			List<MusicBusiModel> line = new ArrayList();
+			line.add(HotestList.get(i));
+			line.add(NewestList.get(i));
+			line.add(RecomList.get(i));
+			RankList.add(line);
+		}
 		
 		return SUCCESS;
 	}
