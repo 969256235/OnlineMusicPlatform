@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
         <form action="" method="post">
           <input type="submit" name="SearchSubmit" class="searchSub" value=" ">
-          <input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
+          <input type="text" name="SearchText" class="searchBox" placeholder="Search" autocomplete="on">
         </form>
       </div>
     </div>

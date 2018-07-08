@@ -3,6 +3,8 @@ package com.ruanko.music.web;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 public class Search extends ActionSupport {
@@ -12,7 +14,8 @@ public class Search extends ActionSupport {
 	
 	public String execute() throws Exception {
 		SearchList = new ArrayList<String>();
-		SearchList.add("First");
+		String str = ServletActionContext.getRequest().getParameter("SearchText");
+		SearchList.add(str);
 		SearchList.add("Second");
 		SearchList.add("Third");
 		resultlength = 100;
