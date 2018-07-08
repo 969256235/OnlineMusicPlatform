@@ -34,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     }
     function nextMusic(audio){
     	if (musicList.length > 0){
-    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/upload/" + musicList.pop()[1]);
+    		audio.setAttribute("src", "http://localhost:8080/OnlineMusicPlatform/" + musicList.pop()[1]);
     		audio.play();
     		document.getElementById("mlLength").innerHTML = musicList.length;
     	}
@@ -43,7 +43,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	document.getElementById("floatbox").style.display="flex";
     	var str='';
     	for (var i = 0; i < musicList.length; i++){
-    		str = str + '<tr><td>' + musicList[i][1] + '<button onclick="musicdelet(' + i.toString() + ')">Delet</button></td></tr>';
+    		str = str + '<tr><td>' + musicList[i][0] + '<button class="deletButton" onclick="musicdelet(' + i.toString() + ')"></button></td></tr>';
     	}
     	document.getElementById("musicLists").innerHTML = str;
     }
@@ -54,9 +54,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     	musicList.splice(index,1);
     	var str='';
     	for (var i = 0; i < musicList.length; i++){
-    		str = str + '<tr><td>' + musicList[i][1] + '<button onclick="">Delet</button></td></tr>';
+    		str = str + '<tr><td>' + musicList[i][0] + '<button class="deletButton" onclick="musicdelet(' + i.toString() + ')"></button></td></tr>';
     	}
     	document.getElementById("musicLists").innerHTML = str;
+    	document.getElementById("mlLength").innerHTML = musicList.length;
     }
   </script>
   
@@ -109,9 +110,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  </tr>
       	  <c:forEach var="rank" items="${RankList}">
       	  <tr>
-      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="addMusic('${rank[0].name}','${rank[0].realname}')"></button></td>
-      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="addMusic('${rank[1].name}','${rank[1].realname}')"></button></td>
-      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="addMusic('${rank[2].name}','${rank[2].realname}')"></button></td>
+      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="addMusic('${rank[0].name}','${rank[0].musicurl}')"></button></td>
+      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="addMusic('${rank[1].name}','${rank[1].musicurl}')"></button></td>
+      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="addMusic('${rank[2].name}','${rank[2].musicurl}')"></button></td>
       	  </tr>
       	  </c:forEach>
       	</table>
