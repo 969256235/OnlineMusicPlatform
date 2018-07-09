@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./">软酷在线音乐平台</a>
+            <a class="navbar-brand" href="./">RuanKoMusic</a>
         </div>
       
     </div>
@@ -57,11 +57,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 </div>
                 <label for="">Account</label>
-                <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名" required autofocus><br>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Please Enter Account" required autofocus><br>
                 <label for="">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码" required><br>
-                <label for="">Repeat</label>
-                <input type="password" name="password2" id="password2" class="form-control" placeholder="请再次输入密码" required maxLength="16"><br>
+                <input type="password" name="password" id="password" class="form-control" placeholder="Please Enter Password" required><br>
+                <label for="">Confirm Password</label>
+                <input type="password" name="password2" id="password2" class="form-control" placeholder="Please Confirm Password" required maxLength="16"><br>
                 <button type="submit" class="btn btn-primary" id="btn-reg">Sign Up</button>
                 <a href="login.jsp" class="btn btn-default" id="btn-reg">Return to Sign In</a>
             </form>

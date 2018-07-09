@@ -38,14 +38,14 @@ public class UserService {
 	 * @return flag:true-注册成功；false-注册失败
 	 * @throws AppException
 	 */
-	public boolean register(User user) throws AppException{
+	public boolean regist(User user) throws AppException{
 		boolean flag = false;
 		try{
 			if(!this.isExist(user)){
-				System.out.println("账户未被注册");
+				//System.out.println("账户未被注册");
 				flag = user_dao.save(user);
 				//flag=true则操作成功
-				System.out.print("注册操作flag:"+flag);
+				//System.out.print("注册操作flag:"+flag);
 			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.register");
