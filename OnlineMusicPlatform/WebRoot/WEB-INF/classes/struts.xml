@@ -13,7 +13,7 @@
 		</action>
 		<action name="SingleMusic"
 			class="com.ruanko.music.web.SingleMusic">
-			<result name="success">/PlayPage.jsp</result>
+			<result name="success">/PlayPage/PlayPage.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="FileUpload"

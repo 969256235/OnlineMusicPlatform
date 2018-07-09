@@ -26,7 +26,7 @@ Selected.prototype = {
         //get the hash from the url if there's any.
         var songName = "Git Fresh - Booty Music";
         that.play(songName);
-        currentSong = "${pageContext.servletContext.contextPath}/${music.musicurl}";
+        currentSong = "${pageContext.servletContext.contextPath}/music/Git Fresh - Booty Music.mp3";
 
         //enable keyboard control , spacebar to play and pause
         

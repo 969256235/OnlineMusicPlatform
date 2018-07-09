@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<link rel="stylesheet" type="text/css" href="style/PlayPage.css">
+	<link rel="stylesheet" type="text/css" href="PlayPage/PlayPage.css">
 	
   </head>
   
@@ -24,11 +24,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <div class = "playPage">
    	<div  class = "backgroundpicture"></div>
      <div class = "topBar">
-        <a href="/OnlineMusicPlatform/" class="titleBar">RuanKoMusic</a>
+        <a href="/OnlineMusicPlatform/main.jsp" class="titleBar">RuanKoMusic</a>
         <a href="" class="signright">Sign up</a>
         <a class="signor">or</a>
         <a href="" class="signleft">Sign in</a>
-        <form action="/OnlineMusicPlatform/Search" method="post">
+        <form action="" method="post">
           	<input type="submit" name="SearchSubmit" class="searchSub" value=" ">
           	<input type="text" name="Search" class="searchBox" placeholder="Search" autocomplete="on">
         </form>
@@ -46,8 +46,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      	</div>
      	<div id = "lyric">
      		<div class = "songName">${music.name}</div>
-     		<span class = "albumName">Album</span>
-     		<span class = "singer">Artist</span>
+     		<span class = "albumName">专辑名-${music.album}</span>
+     		<span class = "singer">歌手-${music.artist}</span>
      		<div id = "lyricWrapper">
      			<div id = "lyricContainer"></div>
      		</div>
@@ -58,7 +58,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       				  //播放完毕
      		   	 	$('#mp3Btn').on('ended', function() {
                 		console.log("音频已播放完成");
-                		$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/style/voice_stop.png) no-repeat center bottom','background-size':'cover'});
+                		$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/PlayPage/voice_stop.png) no-repeat center bottom','background-size':'cover'});
         				$('.albumCover').css({
                				 '-webkit-animation-play-state': 'paused',
    							 '-moz-animation-play-state': 'paused',
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                			 event.stopPropagation();//防止冒泡
                 		if(audio.paused){ //如果当前是暂停状态
                 			audio.play(); //播放
-               				 $('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/style/voice_play.png) no-repeat center bottom','background-size':'cover'});
+               				 $('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/PlayPage/voice_play.png) no-repeat center bottom','background-size':'cover'});
                				
                 			 $('.albumCover').css({
                				 '-webkit-transform': 'rotate(360deg)',
@@ -84,7 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                			 }
                			else{//当前是播放状态
                				audio.pause(); //暂停
-                			$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/style/voice_stop.png) no-repeat center bottom','background-size':'cover'});
+                			$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/PlayPage/voice_stop.png) no-repeat center bottom','background-size':'cover'});
                 			
                 			 $('.albumCover').css({
                				 '-webkit-animation-play-state': 'paused',
@@ -97,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             			if (e.keyCode === 32) {
                 			if (audio.paused) {
                     		audio.play();
-                    		$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/style/voice_play.png) no-repeat center bottom','background-size':'cover'});
+                    		$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/PlayPage/voice_play.png) no-repeat center bottom','background-size':'cover'});
                				
                 			 $('.albumCover').css({
                				 '-webkit-transform': 'rotate(360deg)',
@@ -109,7 +109,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                			 	}
                			 else {
                     		audio.pause();
-                    		$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/style/voice_stop.png) no-repeat center bottom','background-size':'cover'});
+                    		$('.btn-audio').css({'background':'url(${pageContext.servletContext.contextPath}/PlayPage/voice_stop.png) no-repeat center bottom','background-size':'cover'});
                 			
                 			 $('.albumCover').css({
                				 '-webkit-animation-play-state': 'paused',
@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		lyricContainer.appendChild(fragment);
         	}
      		
-     		getLyric("${pageContext.servletContext.contextPath}/${music.lrc}")
+     		getLyric("${pageContext.servletContext.contextPath}/upload/20180704000001.lrc")
      		
      	</script>
      </div>

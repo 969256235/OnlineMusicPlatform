@@ -5,7 +5,7 @@ body{
 }
 
 .backgroundpicture{
-	background-image:url(../style/three.jpg);
+	background-image:url(../music/three.jpg);
 	height:100%;
 	width:100%;
 	background-size:100% 100%;
@@ -111,7 +111,7 @@ a.signor{
 	border-top-right-radius: 0.4em;
 	border-bottom-right-radius: 0.4em;
 	border-color: #808080;
-	background-image:url(../style/search.png);
+	background-image:url(../images/search.png);
 	background-size: 90%;
     background-position-x: 1px;
     background-position-y: 1px;
