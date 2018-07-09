@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 	<link rel="stylesheet" type="text/css" href="style/Theme.css">
+	<link rel="stylesheet" type="text/css" href="style/MainStyle.css">
 
   </head>
   
@@ -32,16 +33,31 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       </div>
     </div>
     
-    <div>
+    <div class="bodycenter">
       <div>
         <button>Upload Music</button>
         <button>Manage Music</button>
         <button>Delete Music</button>
       </div>
       <div>
-        <form method="post" enctype="multipart/form-data">
-          <input type="file" name="">
-          <input type="text">
+        <form method="post" enctype="multipart/form-data" action="/OnlineMusicPlatfrom/FileUpload">
+          <input type="file" name="FileName">
+          <input type="text" name="name" placeholder="Name" autocomplete="on">
+          <input type="text" name="realname" placeholder="Realname" autocomplete="on">
+          <input type="text" name="artist" placeholder="Artist" autocomplete="on">
+          <input type="text" name="album" placeholder="Album" autocomplete="on">
+          <input type="file" name="Lrc">
+          <input type="text" name="zone" placeholder="Zone" autocomplete="on">
+          <input type="text" name="publishdate" placeholder="Publish-Date" autocomplete="on">
+          <input type="file" name="Cover">
+          <input type="file" name="Artist_Photo">
+          <input type="submit">
+        </form>
+      </div>
+      <div>
+        <form method="post" action="/OnlineMusicPlatform/AdmSearch">
+          <input type="text" name="search">
+          <input type="submit">
         </form>
       </div>
     </div>
