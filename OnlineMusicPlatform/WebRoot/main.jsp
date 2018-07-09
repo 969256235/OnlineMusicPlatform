@@ -110,9 +110,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	  </tr>
       	  <c:forEach var="rank" items="${RankList}">
       	  <tr>
-      	    <td><c:out value="${rank[0].name}"/><button class="musicbutton" onclick="/OnlineMusicPlatform/SingleMusic?musicname=${rank[0].name}"></button><button class="addbutton" onclick="addMusic('${rank[0].name}','${rank[0].musicurl}')"></button></td>
-      	    <td><c:out value="${rank[1].name}"/><button class="musicbutton" onclick="/OnlineMusicPlatform/SingleMusic?musicname=${rank[1].name}"></button><button class="addbutton" onclick="addMusic('${rank[1].name}','${rank[1].musicurl}')"></button></td>
-      	    <td><c:out value="${rank[2].name}"/><button class="musicbutton" onclick="/OnlineMusicPlatform/SingleMusic?musicname=${rank[2].name}"></button><button class="addbutton" onclick="addMusic('${rank[2].name}','${rank[2].musicurl}')"></button></td>
+      	    <td><c:out value="${rank[0].name}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${rank[0].name}"><button class="musicbutton"></button></a><button class="addbutton" onclick="addMusic('${rank[0].name}','${rank[0].musicurl}')"></button></td>
+      	    <td><c:out value="${rank[1].name}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${rank[1].name}"><button class="musicbutton"></button></a><button class="addbutton" onclick="addMusic('${rank[1].name}','${rank[1].musicurl}')"></button></td>
+      	    <td><c:out value="${rank[2].name}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${rank[2].name}"><button class="musicbutton"></button></a><button class="addbutton" onclick="addMusic('${rank[2].name}','${rank[2].musicurl}')"></button></td>
       	  </tr>
       	  </c:forEach>
       	</table>

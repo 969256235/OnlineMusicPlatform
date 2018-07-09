@@ -11,7 +11,6 @@ window.onload = function() {
     new Selected().init();
 };
 var Selected = function() {
-    this.audio = document.getElementById('audio');
     this.lyricContainer = document.getElementById('lyricContainer');
     this.currentIndex = 0;
     this.lyric = null;
@@ -25,20 +24,12 @@ Selected.prototype = {
             randomSong;
 
         //get the hash from the url if there's any.
-        var songName = 'Git Fresh - Booty Music';
+        var songName = "Git Fresh - Booty Music";
         that.play(songName);
-        currentSong = "${pageContext.servletContext.contextPath}/music/Git Fresh - Booty Music.mp3";
+        currentSong = "${pageContext.servletContext.contextPath}/${music.musicurl}";
 
         //enable keyboard control , spacebar to play and pause
-        window.addEventListener('keydown', function(e) {
-            if (e.keyCode === 32) {
-                if (that.audio.paused) {
-                    that.audio.play();
-                } else {
-                    that.audio.pause();
-                }
-            }
-        }, false);
+        
 
         currentSong.className = 'current-song';
         this.play(randomSong);
@@ -46,7 +37,6 @@ Selected.prototype = {
     
     play: function(songName) {
         var that = this;
-        this.audio.src = '${pageContext.servletContext.contextPath}/music/' + songName + '.mp3';
         //reset the position of the lyric container
         this.lyricContainer.style.top = '130px';
         //empty the lyric
@@ -74,47 +64,16 @@ Selected.prototype = {
             };
         });
     },
-    playNext: function(that) {
-        var allSongs = this.playlist.children[0].children,
-            nextItem;
-        //reaches the last song of the playlist?
-        if (that.currentIndex === allSongs.length - 1) {
-            //play from start
-            that.currentIndex = 0;
-        } else {
-            //play next index
-            that.currentIndex += 1;
-        };
-        nextItem = allSongs[that.currentIndex].children[0];
-        that.setClass(that.currentIndex);
-        var songName = nextItem.getAttribute('data-name');
-        window.location.hash = songName;
-        that.play(songName);
-    },
-    setClass: function(index) {
-        var allSongs = this.playlist.children[0].children;
-        for (var i = allSongs.length - 1; i >= 0; i--) {
-            allSongs[i].className = '';
-        };
-        allSongs[index].className = 'current-song';
-    },
+
+
     getLyric: function(url) {
         var that = this,
             request = new XMLHttpRequest();
-        request.open('GET', url, true);
-        request.responseType = 'text';
-        //fix for the messy code problem for Chinese.  reference: http://xx.time8.org/php/20101218/ajax-xmlhttprequest.html
-        //request['overrideMimeType'] && request.overrideMimeType("text/html;charset=gb2312");
-        request.onload = function() {
-            that.lyric = that.parseLyric(request.response);
-            //display lyric to the page
-            that.appendLyric(that.lyric);
-        };
-        request.onerror = request.onabort = function(e) {
-            that.lyricContainer.textContent = '!failed to load the lyric :(';
-        }
+       
+        that.lyric = that.parseLyric(url);
+        that.appendLyric(that.lyric);
         this.lyricContainer.textContent = 'loading lyric...';
-        request.send();
+       
     },
     parseLyric: function(text) {
         //get each line from the text

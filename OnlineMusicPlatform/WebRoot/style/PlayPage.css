@@ -1,44 +1,62 @@
 body{
 	background: #fdfdfd;
-	font-size:100%
+	font-size:100%;
+	font-family: Axure Handwriting;
 }
+
+.backgroundpicture{
+	background-image:url(../style/three.jpg);
+	height:100%;
+	width:100%;
+	background-size:100% 100%;
+	-webkit-filter:blur(30px);
+	filter:blur(30px);
+	z-index:-1;
+}
+
+
 
 @-webkit-keyframes rotation{
 from {-webkit-transform: rotate(0deg);}
 to {-webkit-transform: rotate(360deg);}
 }
 
+.playPage{
+	
+	font-family: Axure Handwriting;
+}
+
 /*¶¥²¿À¸*/
 .topBar{
 	position:fixed;
 	top:0px;
+	left:0px;
 	width:100%;
-	background:black;
-	box-shadow:0px 5px #ff0000;
+	color:#000;
+	background:#f9b4b8;
+	box-shadow:0px 3px #82ccd5;
 }
 
 a.titleBar{
 	float: left;
 	display: block;
-	color: white;
+	color:#000;
 	text-align: center;
 	padding: 1.5em 1.8em;
 	text-decoration: none;
 	font-size: 1em;
-	font-family: Arial,Helvetica,sans-serif;
 	font-weight: 700;
 }
 
 a.signright, a.signleft{
 	float: right;
 	display: block;
-	color: white;
 	text-align: center;
+	color:#000;
 	padding-top: 1.5em;
 	padding-bottom: 1.5em;
 	text-decoration: none;
 	font-size: 1em;
-	font-family: Arial,Helvetica,sans-serif;
 	font-weight: 700;
 }
 
@@ -54,7 +72,7 @@ a.signleft{
 a.signor{
 	float: right;
 	display: block;
-	color: #804040;
+	color: #fff;
 	text-align: center;
 	padding-top: 1.5em;
 	padding-bottom: 1.5em;
@@ -62,7 +80,6 @@ a.signor{
 	padding-left: 0.25em;
 	text-decoration: none;
 	font-size: 1em;
-	font-family: Arial,Helvetica,sans-serif;
 	font-weight: normal;
 }
 
@@ -70,12 +87,12 @@ a.signor{
 	float: right;
 	height: 2.0em;
 	width: 15em;
+	font-family: Axure Handwriting;
 	margin-top: 1.5em;
 	margin-right: 0em;
-	font-family: Arial,Helvetica,sans-serif;
 	padding: 0.25em;
 	color: #808080;
-	border: 0.1em solid;
+	border: 0.05em solid;
 	border-right: 0em;
 	border-top-left-radius: 0.4em;
 	border-bottom-left-radius: 0.4em;
@@ -89,12 +106,15 @@ a.signor{
 	margin-top: 1.5em;
 	margin-left: 0em;
 	padding: 0.25em;
-	font-family: Arial,Helvetica,sans-serif;
 	color: #808080;
-	border: 0.1em solid;
+	border: 0.05em solid;
 	border-top-right-radius: 0.4em;
 	border-bottom-right-radius: 0.4em;
 	border-color: #808080;
+	background-image:url(../style/search.png);
+	background-size: 90%;
+    background-position-x: 1px;
+    background-position-y: 1px;
 	background-color: white;
 }
 
@@ -106,6 +126,8 @@ a.signor{
 	width: 70%;
     left: 15%;
     right: 15%;
+    display: flex;
+    justify-content: space-between;
 }
 .control{
 	height:auto;
@@ -118,8 +140,46 @@ a.signor{
 .btn-audio{
     margin-left: 7em;
     margin-top: 1em;
-    width: 50px;
-    height: 50px;
+    width: 266px;
+    height: 90px;
     background:url(./voice_stop.png) no-repeat center bottom;
     background-size:cover;
+}
+
+#lyric{
+	right:20%;
+}
+.songName{
+	font-size: 1.5em;
+    font-weight: bold;
+}
+.albumName, .singer{
+	margin: 30 20 10 0;
+    position: relative;
+    top: 10px;
+}
+
+#lyricWrapper{
+	height:380px;
+    overflow: hidden;
+    top:20px;
+    position:relative;
+}
+#lyricContainer{
+	position: relative;
+}
+.current-line-0{
+    color: #FAFA17;
+}
+.current-line-1{
+    color: #ff1493;
+}
+.current-line-2 {
+    color: #adff2f;
+}
+.current-line-3 {
+    color: #c617e8;
+}
+.current-song, .current-song a {
+    color: #A6E22D;
 }

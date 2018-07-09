@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<table id="resultTable">
       	  <c:forEach var="result" items="${SearchList}">
       	  <tr>
-      	    <td><c:out value="${result.name}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${result}"><button class="musicbutton"></button></a></td>
+      	    <td><c:out value="${result.name}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${result.name}"><button class="musicbutton"></button></a></td>
       	  </tr>
       	  </c:forEach>
       	</table>
