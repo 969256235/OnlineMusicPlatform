@@ -20,4 +20,24 @@
 			class="com.ruanko.music.web.FileUpload">
 			<result name="success">/SuccessUpload.jsp</result>
 			<result name="error">/error.jsp</result>
+		</action>
+		<action name="AdmSearch"
+			class="com.ruanko.music.web.AdmSearch">
+			<result name="success">/admsearch.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="DeleteMusic"
+			class="com.ruanko.music.web.DeleteMusic">
+			<result name="success">/SuccessDelete.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ShowManage"
+			class="com.ruanko.music.web.ShowManage">
+			<result name="success">/ManageMusic.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="ManageMusic"
+			class="com.ruanko.music.web.ManageMusic">
+			<result name="success">/SuccessManage.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action></package></struts>    
