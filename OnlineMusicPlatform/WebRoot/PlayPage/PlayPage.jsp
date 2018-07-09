@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		lyricContainer.appendChild(fragment);
         	}
      		
-     		getLyric("${pageContext.servletContext.contextPath}/upload/20180704000001.lrc")
+     		getLyric("${pageContext.servletContext.contextPath}/upload/20180704000030.lrc")
      		
      	</script>
      </div>
