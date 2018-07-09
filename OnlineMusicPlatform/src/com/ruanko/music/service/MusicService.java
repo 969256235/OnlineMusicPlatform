@@ -16,7 +16,7 @@ import com.ruanko.music.utils.AppException;
  */
 public class MusicService {
 
-	static MusicDao music_dao;
+	static MusicDao music_dao = new MusicDaoImp();
 	
 	public MusicService(){
 		MusicService.music_dao = new MusicDaoImp(); 
