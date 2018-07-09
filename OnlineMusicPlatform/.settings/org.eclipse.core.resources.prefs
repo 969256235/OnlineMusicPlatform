@@ -2,3 +2,5 @@ eclipse.preferences.version=1
 encoding//WebRoot/main.jsp=UTF-8
 encoding//WebRoot/signin.jsp=UTF-8
 encoding//WebRoot/signup.jsp=UTF-8
+encoding//src/com/ruanko/music/dao/impl/MusicDaoImp.java=UTF-8
+encoding//src/com/ruanko/music/utils/DBUtil.java=UTF-8

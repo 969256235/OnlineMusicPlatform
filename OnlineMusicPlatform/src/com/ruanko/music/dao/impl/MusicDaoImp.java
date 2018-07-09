@@ -21,26 +21,26 @@ import com.ruanko.music.utils.AppException;
 import com.ruanko.music.utils.DBUtil;
 
 /**
- * 音乐数据访问层实现类
+ * 闊充箰鏁版嵁璁块棶灞傚疄鐜扮被
  */
 public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public ArrayList<MusicBusiModel> getMostPopMusic() throws AppException {
-		Connection conn = null;// 声明数据库连接
-		PreparedStatement psmt = null;// 声明预处理语句
-		ResultSet rs, rs1 = null;// 声明结果集合
+		Connection conn = null;// 澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;// 澹版槑棰勫鐞嗚鍙�
+		ResultSet rs, rs1 = null;// 澹版槑缁撴灉闆嗗悎
 
-		// 查询点击量前十的歌曲并且返回MusicBusiModel的数组
-		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();// 声明返回结果
+		// 鏌ヨ鐐瑰嚮閲忓墠鍗佺殑姝屾洸骞朵笖杩斿洖MusicBusiModel鐨勬暟缁�
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();// 澹版槑杩斿洖缁撴灉
 		try {
-			// 获得所有tag和对应的编号
-			// 使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();// 获得数据库连接
-			String sql1 = "select * from tag;";// 获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);// 预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);// 执行获取tag信息的语句
-			Map map = new HashMap();// 用hashMap存储
+			// 鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			// 浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();// 鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";// 鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);// 棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);// 鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();// 鐢╤ashMap瀛樺偍
 			while (rs1.next()) {
 				map.put(rs1.getInt(1), rs1.getString(2));
 				// System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -60,10 +60,10 @@ public class MusicDaoImp implements MusicDao {
 					+ "order by popularity.hits_count desc limit 10;";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			while (rs.next()) {
 				MusicBusiModel mbmd = new MusicBusiModel();
-				// 设置MusicBusiModel
+				// 璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(1));
 				mbmd.setHit_count(rs.getInt(2));
 				mbmd.setId(rs.getInt(3));
@@ -73,12 +73,12 @@ public class MusicDaoImp implements MusicDao {
 				mbmd.setZone(rs.getString(7));
 				mbmd.setPublishdate(rs.getString(8));
 				mbmd.setTag1(map.get(rs.getInt(9)).toString());
-				if (map.get(rs.getInt(10)) != null)
+				if (rs.getInt(10) != 0)
 					mbmd.setTag2(map.get(rs.getInt(10)).toString());
 				else {
 					mbmd.setTag2("");
 				}
-				if (map.get(rs.getInt(10)) != null)
+				if (rs.getInt(11) != 0)
 					mbmd.setTag3(map.get(rs.getInt(11)).toString());
 				else {
 					mbmd.setTag3("");
@@ -94,7 +94,7 @@ public class MusicDaoImp implements MusicDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -113,20 +113,20 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public ArrayList<MusicBusiModel> getNewestMusic() throws AppException {
-		Connection conn = null;// 声明数据库连接
-		PreparedStatement psmt = null;// 声明预处理语句
-		ResultSet rs, rs1 = null;// 声明结果集合
+		Connection conn = null;// 澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;// 澹版槑棰勫鐞嗚鍙�
+		ResultSet rs, rs1 = null;// 澹版槑缁撴灉闆嗗悎
 
-		// 查询点击量前十的歌曲并且返回MusicBusiModel的数组
-		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();// 声明返回结果
+		// 鏌ヨ鐐瑰嚮閲忓墠鍗佺殑姝屾洸骞朵笖杩斿洖MusicBusiModel鐨勬暟缁�
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();// 澹版槑杩斿洖缁撴灉
 		try {
-			// 获得所有tag和对应的编号
-			// 使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();// 获得数据库连接
-			String sql1 = "select * from tag;";// 获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);// 预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);// 执行获取tag信息的语句
-			Map map = new HashMap();// 用hashMap存储
+			// 鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			// 浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();// 鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";// 鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);// 棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);// 鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();// 鐢╤ashMap瀛樺偍
 			while (rs1.next()) {
 				map.put(rs1.getInt(1), rs1.getString(2));
 				// System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -139,10 +139,10 @@ public class MusicDaoImp implements MusicDao {
 					+ "and album.alb_id = music.alb_id " + "order by music.publishdate desc limit 10;";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			while (rs.next()) {
 				MusicBusiModel mbmd = new MusicBusiModel();
-				// 设置MusicBusiModel
+				// 璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(1));
 				mbmd.setHit_count(rs.getInt(2));
 				mbmd.setId(rs.getInt(3));
@@ -174,7 +174,7 @@ public class MusicDaoImp implements MusicDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -224,7 +224,7 @@ public class MusicDaoImp implements MusicDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -246,24 +246,24 @@ public class MusicDaoImp implements MusicDao {
 		return list;
 	}
 
-	// 无论歌曲是否存在均返回MusicBusiModel对象
-	// 根据id查询歌曲并返回MusicBusiModel
-	// 若不存在MusicBusiModel对象，但其内容为null
+	// 鏃犺姝屾洸鏄惁瀛樺湪鍧囪繑鍥濵usicBusiModel瀵硅薄
+	// 鏍规嵁id鏌ヨ姝屾洸骞惰繑鍥濵usicBusiModel
+	// 鑻ヤ笉瀛樺湪MusicBusiModel瀵硅薄锛屼絾鍏跺唴瀹逛负null
 	@Override
 	public MusicBusiModel getMusicById(String Id) throws AppException {
-		Connection conn = null;// 声明数据库连接
-		PreparedStatement psmt = null;// 声明预处理语句
-		ResultSet rs, rs1 = null;// 声明结果集合
-		MusicBusiModel mbmd = new MusicBusiModel();// 声明返回的MusicBusiModel对象
+		Connection conn = null;// 澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;// 澹版槑棰勫鐞嗚鍙�
+		ResultSet rs, rs1 = null;// 澹版槑缁撴灉闆嗗悎
+		MusicBusiModel mbmd = new MusicBusiModel();// 澹版槑杩斿洖鐨凪usicBusiModel瀵硅薄
 
 		try {
-			// 获得所有tag和对应的编号
-			// 使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();// 获得数据库连接
-			String sql1 = "select * from tag;";// 获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);// 预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);// 执行获取tag信息的语句
-			Map map = new HashMap();// 用hashMap存储
+			// 鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			// 浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();// 鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";// 鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);// 棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);// 鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();// 鐢╤ashMap瀛樺偍
 			while (rs1.next()) {
 				map.put(rs1.getInt(1), rs1.getString(2));
 				// System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -285,20 +285,20 @@ public class MusicDaoImp implements MusicDao {
 			System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			if (rs.next()) {
-				// 设置MusicBusiModel
+				// 璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(15));
 				mbmd.setHit_count(rs.getInt(16));
 				mbmd.setId(rs.getInt(1));
 				mbmd.setName(rs.getString(2));
-				System.out.println("歌曲名:" + rs.getString(2));
+				System.out.println("姝屾洸鍚�:" + rs.getString(2));
 				mbmd.setRealname(rs.getString(3));
 				mbmd.setLrc(rs.getString(4));
 				mbmd.setZone(rs.getString(5));
 				mbmd.setPublishdate(rs.getString(6));
 				mbmd.setTag1(map.get(rs.getInt(7)).toString());
-				// tag2、tag3可为null
+				// tag2銆乼ag3鍙负null
 				if (rs.getInt(8) != 0) {
 					mbmd.setTag2(map.get(rs.getInt(8)).toString());
 				} else {
@@ -314,14 +314,14 @@ public class MusicDaoImp implements MusicDao {
 				mbmd.setArtist_photo(rs.getString(12));
 				mbmd.setAlbum(rs.getString(13));
 				mbmd.setArtist_photo(rs.getString(14));
-				// 关闭结果集合，语句和连接
+				// 鍏抽棴缁撴灉闆嗗悎锛岃鍙ュ拰杩炴帴
 				DBUtil.closeResultSet(rs);
 				DBUtil.closeResultSet(rs1);
 				DBUtil.closeStatement(psmt);
 				DBUtil.closeConnection(conn);
 			} else {
-				System.out.println("查询无结果");
-				// 关闭结果集合，语句和连接
+				System.out.println("鏌ヨ鏃犵粨鏋�");
+				// 鍏抽棴缁撴灉闆嗗悎锛岃鍙ュ拰杩炴帴
 				DBUtil.closeResultSet(rs);
 				DBUtil.closeResultSet(rs1);
 				DBUtil.closeStatement(psmt);
@@ -335,25 +335,25 @@ public class MusicDaoImp implements MusicDao {
 		return mbmd;
 	}
 
-	// 无论歌曲是否存在均返回MusicBusiModel对象
-	// 根据歌曲名称查询歌曲并返回MusicBusiModel
-	// 若不存在MusicBusiModel对象，但其内容为null
-	// 模糊搜索，存在目标字段的歌曲都会被搜索
+	// 鏃犺姝屾洸鏄惁瀛樺湪鍧囪繑鍥濵usicBusiModel瀵硅薄
+	// 鏍规嵁姝屾洸鍚嶇О鏌ヨ姝屾洸骞惰繑鍥濵usicBusiModel
+	// 鑻ヤ笉瀛樺湪MusicBusiModel瀵硅薄锛屼絾鍏跺唴瀹逛负null
+	// 妯＄硦鎼滅储锛屽瓨鍦ㄧ洰鏍囧瓧娈电殑姝屾洸閮戒細琚悳绱�
 	@Override
 	public ArrayList<MusicBusiModel> getMusicByName(String name) throws AppException {
-		Connection conn = null;// 声明数据库连接
-		PreparedStatement psmt = null;// 声明预处理语句
-		ResultSet rs, rs1 = null;// 声明结果集合
-		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();// 声明返回结果
+		Connection conn = null;// 澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;// 澹版槑棰勫鐞嗚鍙�
+		ResultSet rs, rs1 = null;// 澹版槑缁撴灉闆嗗悎
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();// 澹版槑杩斿洖缁撴灉
 
 		try {
-			// 获得所有tag和对应的编号
-			// 使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();// 获得数据库连接
-			String sql1 = "select * from tag;";// 获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);// 预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);// 执行获取tag信息的语句
-			Map map = new HashMap();// 用hashMap存储
+			// 鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			// 浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();// 鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";// 鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);// 棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);// 鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();// 鐢╤ashMap瀛樺偍
 			while (rs1.next()) {
 				map.put(rs1.getInt(1), rs1.getString(2));
 				// System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -375,21 +375,21 @@ public class MusicDaoImp implements MusicDao {
 			// System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			while (rs.next()) {
-				MusicBusiModel mbmd = new MusicBusiModel();// 声明MusicBusiModel对象
-				// 设置MusicBusiModel
+				MusicBusiModel mbmd = new MusicBusiModel();// 澹版槑MusicBusiModel瀵硅薄
+				// 璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(15));
 				mbmd.setHit_count(rs.getInt(16));
 				mbmd.setId(rs.getInt(1));
 				mbmd.setName(rs.getString(2));
-				// System.out.println("歌曲名:"+rs.getString(2));
+				// System.out.println("姝屾洸鍚�:"+rs.getString(2));
 				mbmd.setRealname(rs.getString(3));
 				mbmd.setLrc(rs.getString(4));
 				mbmd.setZone(rs.getString(5));
 				mbmd.setPublishdate(rs.getString(6));
 				mbmd.setTag1(map.get(rs.getInt(7)).toString());
-				// tag2、tag3可为null
+				// tag2銆乼ag3鍙负null
 				if (rs.getInt(8) != 0) {
 					mbmd.setTag2(map.get(rs.getInt(8)).toString());
 				} else {
@@ -407,7 +407,7 @@ public class MusicDaoImp implements MusicDao {
 				mbmd.setArtist_photo(rs.getString(14));
 				mbml.add(mbmd);
 			}
-			// 关闭结果集合，语句和连接
+			// 鍏抽棴缁撴灉闆嗗悎锛岃鍙ュ拰杩炴帴
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeResultSet(rs1);
 			DBUtil.closeStatement(psmt);
@@ -419,22 +419,22 @@ public class MusicDaoImp implements MusicDao {
 	}
 
 	@Override
-	//模糊搜索
-	//根据歌手名查询歌曲
+	//妯＄硦鎼滅储
+	//鏍规嵁姝屾墜鍚嶆煡璇㈡瓕鏇�
 	public ArrayList<MusicBusiModel> getMusicByArtist(String art_name) throws AppException {
-		Connection conn = null;//声明数据库连接
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs,rs1 = null;//声明结果集合		
-		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();//声明返回结果
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs,rs1 = null;//澹版槑缁撴灉闆嗗悎		
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();//澹版槑杩斿洖缁撴灉
 		
 		try{
-			//获得所有tag和对应的编号
-			//使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();//获得数据库连接
-			String sql1 = "select * from tag;";//获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);//预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);//执行获取tag信息的语句
-			Map map = new HashMap();//用hashMap存储
+			//鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			//浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();//鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";//鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);//棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);//鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();//鐢╤ashMap瀛樺偍
 			while(rs1.next()){
 				map.put(rs1.getInt(1), rs1.getString(2));
 				//System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -461,21 +461,21 @@ public class MusicDaoImp implements MusicDao {
 			//System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			while(rs.next()){
-				MusicBusiModel mbmd = new MusicBusiModel();//声明MusicBusiModel对象
-				//设置MusicBusiModel
+				MusicBusiModel mbmd = new MusicBusiModel();//澹版槑MusicBusiModel瀵硅薄
+				//璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(15));
 				mbmd.setHit_count(rs.getInt(16));
 				mbmd.setId(rs.getInt(3));
 				mbmd.setName(rs.getString(4));
-				//System.out.println("歌曲名:"+rs.getString(2));
+				//System.out.println("姝屾洸鍚�:"+rs.getString(2));
 				mbmd.setRealname(rs.getString(5));
 				mbmd.setLrc(rs.getString(6));
 				mbmd.setZone(rs.getString(7));
 				mbmd.setPublishdate(rs.getString(8));
 				mbmd.setTag1(map.get(rs.getInt(9)).toString());
-				//tag2、tag3可为null
+				//tag2銆乼ag3鍙负null
 				if(rs.getInt(10)!=0){
 					mbmd.setTag2(map.get(rs.getInt(10)).toString());
 				}
@@ -495,7 +495,7 @@ public class MusicDaoImp implements MusicDao {
 				mbmd.setArtist_photo(rs.getString(14));
 				mbml.add(mbmd);
 			}
-			//关闭结果集合，语句和连接
+			//鍏抽棴缁撴灉闆嗗悎锛岃鍙ュ拰杩炴帴
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeResultSet(rs1);
 			DBUtil.closeStatement(psmt);
@@ -508,22 +508,22 @@ public class MusicDaoImp implements MusicDao {
 
 
 	@Override
-	//模糊搜索
-	//通过专辑名搜索歌曲
+	//妯＄硦鎼滅储
+	//閫氳繃涓撹緫鍚嶆悳绱㈡瓕鏇�
 	public ArrayList<MusicBusiModel> getMusicByAlbum(String alb_name) throws AppException {
-		Connection conn = null;//声明数据库连接
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs,rs1 = null;//声明结果集合		
-		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();//声明返回结果
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs,rs1 = null;//澹版槑缁撴灉闆嗗悎		
+		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();//澹版槑杩斿洖缁撴灉
 		
 		try{
-			//获得所有tag和对应的编号
-			//使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();//获得数据库连接
-			String sql1 = "select * from tag;";//获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);//预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);//执行获取tag信息的语句
-			Map map = new HashMap();//用hashMap存储
+			//鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			//浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();//鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";//鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);//棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);//鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();//鐢╤ashMap瀛樺偍
 			while(rs1.next()){
 				map.put(rs1.getInt(1), rs1.getString(2));
 				//System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -549,21 +549,21 @@ public class MusicDaoImp implements MusicDao {
 			//System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			while(rs.next()){
-				MusicBusiModel mbmd = new MusicBusiModel();//声明MusicBusiModel对象
-				//设置MusicBusiModel
+				MusicBusiModel mbmd = new MusicBusiModel();//澹版槑MusicBusiModel瀵硅薄
+				//璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(15));
 				mbmd.setHit_count(rs.getInt(16));
 				mbmd.setId(rs.getInt(5));
 				mbmd.setName(rs.getString(6));
-				//System.out.println("歌曲名:"+rs.getString(2));
+				//System.out.println("姝屾洸鍚�:"+rs.getString(2));
 				mbmd.setRealname(rs.getString(7));
 				mbmd.setLrc(rs.getString(8));
 				mbmd.setZone(rs.getString(9));
 				mbmd.setPublishdate(rs.getString(10));
 				mbmd.setTag1(map.get(rs.getInt(11)).toString());
-				//tag2、tag3可为null
+				//tag2銆乼ag3鍙负null
 				if(rs.getInt(12)!=0){
 					mbmd.setTag2(map.get(rs.getInt(12)).toString());
 				}
@@ -583,7 +583,7 @@ public class MusicDaoImp implements MusicDao {
 				mbmd.setArtist_photo(rs.getString(2));
 				mbml.add(mbmd);
 			}
-			//关闭结果集合，语句和连接
+			//鍏抽棴缁撴灉闆嗗悎锛岃鍙ュ拰杩炴帴
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeResultSet(rs1);
 			DBUtil.closeStatement(psmt);
@@ -595,16 +595,16 @@ public class MusicDaoImp implements MusicDao {
 	}
 	
 	@Override
-	//精确
-	//通过歌手id搜索歌手
+	//绮剧‘
+	//閫氳繃姝屾墜id鎼滅储姝屾墜
 	public Artist getArtistById(String Id) throws AppException {
-		Connection conn = null;//声明数据库连接对象
-		PreparedStatement psmt = null;//声明预处理语句对象
-		ResultSet rs = null;//声明结果集对象
-		Artist artist = new Artist();//声明返回的对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺ュ璞�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙ュ璞�
+		ResultSet rs = null;//澹版槑缁撴灉闆嗗璞�
+		Artist artist = new Artist();//澹版槑杩斿洖鐨勫璞�
 		
 		try {
-			conn = DBUtil.getConnection();//获得数据库连接
+			conn = DBUtil.getConnection();//鑾峰緱鏁版嵁搴撹繛鎺�
 			String sql = "select * from artist where art_id = '" + Id +"'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -632,21 +632,21 @@ public class MusicDaoImp implements MusicDao {
 
 
 	@Override
-	//模糊搜索
-	//根据检索信息寻找包含检索信息的歌手列表
+	//妯＄硦鎼滅储
+	//鏍规嵁妫�绱俊鎭鎵惧寘鍚绱俊鎭殑姝屾墜鍒楄〃
 	public ArrayList<Artist> getArtistByName(String name) throws AppException {
-		Connection conn = null;//声明数据库连接对象
-		PreparedStatement psmt = null;//声明预处理语句对象
-		ResultSet rs = null;//声明结果集对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺ュ璞�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙ュ璞�
+		ResultSet rs = null;//澹版槑缁撴灉闆嗗璞�
 		ArrayList<Artist> artList = new ArrayList<Artist>();
 		
 		try {
-			conn = DBUtil.getConnection();//获得数据库连接
+			conn = DBUtil.getConnection();//鑾峰緱鏁版嵁搴撹繛鎺�
 			String sql = "select * from artist where name like '%" + name +"%'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()){
-				Artist artist = new Artist();//声明返回的对象
+				Artist artist = new Artist();//澹版槑杩斿洖鐨勫璞�
 				artist.setArtId(rs.getInt(1));
 				artist.setName(rs.getString(2));
 				artist.setImage1(rs.getString(3));
@@ -667,16 +667,16 @@ public class MusicDaoImp implements MusicDao {
 	}
 
 	@Override
-	//精确搜索
-	//根据专辑id搜索专辑
+	//绮剧‘鎼滅储
+	//鏍规嵁涓撹緫id鎼滅储涓撹緫
 	public Album getAlbumById(String Id) throws AppException {
-		Connection conn = null;//声明数据库连接对象
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs = null;//声明结果集合对象
-		Album album = new Album();//声明返回的专辑对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺ュ璞�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs = null;//澹版槑缁撴灉闆嗗悎瀵硅薄
+		Album album = new Album();//澹版槑杩斿洖鐨勪笓杈戝璞�
 		
 		try {
-			conn = DBUtil.getConnection();//连接数据库
+			conn = DBUtil.getConnection();//杩炴帴鏁版嵁搴�
 			String sql = "select * from album where alb_id = '" + Id + "'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -691,7 +691,7 @@ public class MusicDaoImp implements MusicDao {
 				album.setDescription(rs.getString(8));
 				album.setDel(rs.getInt(9));
 			}
-			//关闭数据库相关对象
+			//鍏抽棴鏁版嵁搴撶浉鍏冲璞�
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeStatement(psmt);
 			DBUtil.closeConnection(conn);
@@ -702,21 +702,21 @@ public class MusicDaoImp implements MusicDao {
 	}
 	
 	@Override
-	//模糊搜索
-	//根据检索信息寻找包含检索信息的专辑列表
+	//妯＄硦鎼滅储
+	//鏍规嵁妫�绱俊鎭鎵惧寘鍚绱俊鎭殑涓撹緫鍒楄〃
 	public ArrayList<Album> getAlbumByName(String name) throws AppException {
-		Connection conn = null;//声明数据库连接对象
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs = null;//声明结果集合对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺ュ璞�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs = null;//澹版槑缁撴灉闆嗗悎瀵硅薄
 		ArrayList<Album> albumList = new ArrayList<Album>();
 		
 		try {
-			conn = DBUtil.getConnection();//连接数据库
+			conn = DBUtil.getConnection();//杩炴帴鏁版嵁搴�
 			String sql = "select * from album where name like '%" + name + "%'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()){
-				Album album = new Album();//声明专辑对象
+				Album album = new Album();//澹版槑涓撹緫瀵硅薄
 				album.setAlbId(rs.getInt(1));
 				album.setArt_id(rs.getInt(2));
 				album.setName(rs.getString(3));
@@ -728,7 +728,7 @@ public class MusicDaoImp implements MusicDao {
 				album.setDel(rs.getInt(9));
 				albumList.add(album);
 			}
-			//关闭数据库相关对象
+			//鍏抽棴鏁版嵁搴撶浉鍏冲璞�
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeStatement(psmt);
 			DBUtil.closeConnection(conn);
@@ -740,16 +740,16 @@ public class MusicDaoImp implements MusicDao {
 
 
 	@Override
-	//精确搜索
-	//根据专辑id搜索标签
+	//绮剧‘鎼滅储
+	//鏍规嵁涓撹緫id鎼滅储鏍囩
 	public Tag getTagById(String Id) throws AppException {
-		Connection conn = null;//声明数据库连接对象
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs = null;//声明结果集合对象
-		Tag tag = new Tag();//声明返回的专辑对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺ュ璞�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs = null;//澹版槑缁撴灉闆嗗悎瀵硅薄
+		Tag tag = new Tag();//澹版槑杩斿洖鐨勪笓杈戝璞�
 		
 		try {
-			conn = DBUtil.getConnection();//连接数据库
+			conn = DBUtil.getConnection();//杩炴帴鏁版嵁搴�
 			String sql = "select * from tag where tag_id = '" + Id + "'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -759,7 +759,7 @@ public class MusicDaoImp implements MusicDao {
 				tag.setDescription(rs.getString(3));
 				tag.setDel(rs.getInt(4));
 			}
-			//关闭数据库相关对象
+			//鍏抽棴鏁版嵁搴撶浉鍏冲璞�
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeStatement(psmt);
 			DBUtil.closeConnection(conn);
@@ -771,16 +771,16 @@ public class MusicDaoImp implements MusicDao {
 	
 
 	@Override
-	//精确搜索
-	//根据标签名查询标签
+	//绮剧‘鎼滅储
+	//鏍规嵁鏍囩鍚嶆煡璇㈡爣绛�
 	public Tag getTagByName(String name) throws AppException {
-		Connection conn = null;//声明数据库连接对象
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs = null;//声明结果集合对象
-		Tag tag = new Tag();//声明返回的专辑对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺ュ璞�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs = null;//澹版槑缁撴灉闆嗗悎瀵硅薄
+		Tag tag = new Tag();//澹版槑杩斿洖鐨勪笓杈戝璞�
 		
 		try {
-			conn = DBUtil.getConnection();//连接数据库
+			conn = DBUtil.getConnection();//杩炴帴鏁版嵁搴�
 			String sql = "select * from tag where tagname = '" + name + "'";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
@@ -790,7 +790,7 @@ public class MusicDaoImp implements MusicDao {
 				tag.setDescription(rs.getString(3));
 				tag.setDel(rs.getInt(4));
 			}
-			//关闭数据库相关对象
+			//鍏抽棴鏁版嵁搴撶浉鍏冲璞�
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeStatement(psmt);
 			DBUtil.closeConnection(conn);
@@ -803,16 +803,16 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public int addMusic(Music music) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		int res = 0;
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "insert into music(tag1,tag2,tag3,alb_id,art_id,name,realname,publishdate,lrc,zone,del,mus_url) values (?,?,?,?,?,?,?,?,?,?,0,?);";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
 			psmt.setLong(1, music.getTag1());
 			System.out.println(music.getTag1());
 			if(music.getTag2()!=0){
@@ -835,13 +835,13 @@ public class MusicDaoImp implements MusicDao {
 			psmt.setString(9, music.getLrc());
 			psmt.setString(10, music.getZone());
 			psmt.setString(11, music.getMusicurl());
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			psmt.executeUpdate();
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -862,12 +862,12 @@ public class MusicDaoImp implements MusicDao {
 			rs = psmt.executeQuery();
 			rs.next();
 			res = rs.getInt(1);
-			// 8.获取操作结果，设置flag
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -886,30 +886,30 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public int addArtist(Artist artist) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		int res = 0;
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "insert into artist(name,image1,image2,description,category,gender,del) values(?,?,?,?,?,?,0);";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
-			// 6.为参数设置值
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
+			// 6.涓哄弬鏁拌缃��
 			psmt.setString(1, artist.getName());
 			psmt.setString(2, artist.getImage1());
 			psmt.setString(3, artist.getImage2());
 			psmt.setString(4, artist.getDescription());
 			psmt.setString(5, artist.getCategory());
 			psmt.setString(6, artist.getGender());
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			psmt.executeUpdate();
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -925,18 +925,18 @@ public class MusicDaoImp implements MusicDao {
 		}
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "select max(art_id) from artist;";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			rs.next();
 			res = rs.getInt(1);
-			// 8.获取操作结果，设置flag
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -955,17 +955,17 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public int addAlbum(Album album) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		int res = 0;
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "insert into album (art_id,name,publishdate,image1,image2,company,description,del) values(?,?,?,?,?,?,?,0);";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
-			// 6.为参数设置值
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
+			// 6.涓哄弬鏁拌缃��
 			psmt.setLong(1, album.getArt_id());
 			psmt.setString(2, album.getName());
 			psmt.setString(3, album.getPublishdate());
@@ -974,21 +974,21 @@ public class MusicDaoImp implements MusicDao {
 			psmt.setString(6, album.getCompany());
 			psmt.setString(7, album.getDescription());
 
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			int result = psmt.executeUpdate();
-			System.out.println("本次操作影响" + result + "行");
+			System.out.println("鏈鎿嶄綔褰卞搷" + result + "琛�");
 			sql = "select max(alb_id) from album;";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			rs.next();
 			res = rs.getInt(1);
-			// 8.获取操作结果，设置flag
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 			return 0;
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -1007,36 +1007,36 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public int addPopularity(Popularity pop) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		int res = 0;
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "insert into popularity (obj_id,down_count,hits_count,type,del) values(?,?,?,?,0);";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
-			// 6.为参数设置值
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
+			// 6.涓哄弬鏁拌缃��
 			psmt.setLong(1, pop.getObj_id());
 			psmt.setLong(2, pop.getDown_count());
 			psmt.setLong(3, pop.getHit_count());
 			psmt.setLong(4, pop.getType());
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			int result = psmt.executeUpdate();
-			System.out.println("本次操作影响" + result + "行");
+			System.out.println("鏈鎿嶄綔褰卞搷" + result + "琛�");
 			sql = "select max(pop_id) from popularity;";
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			rs.next();
 			res = rs.getInt(1);
-			// 8.获取操作结果，设置flag
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 			return 0;
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -1057,26 +1057,26 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public boolean delMusic(String id) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "update music set del = 1 where mus_id = ?";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
-			// 6.为参数设置值
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
+			// 6.涓哄弬鏁拌缃��
 			psmt.setLong(1, Integer.parseInt(id));
 
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			psmt.executeUpdate();
-			// 8.获取操作结果，设置flag
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 			return false;
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -1096,7 +1096,7 @@ public class MusicDaoImp implements MusicDao {
 			conn = DBUtil.getConnection();
 			String sql = "update popularity set del = 1 where obj_id = ? and type = 3";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
 			psmt.setLong(1, Integer.parseInt(id));
 			psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -1121,12 +1121,12 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public boolean resetMusic(Music music) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "update music set tag1 = ?,tag2 = ?,tag3 = ?,alb_id = ?,art_id = ?,name = ?,realname = ?,publishdate = ?,lrc = ?,zone = ?,mus_url = ?where mus_id = ?;";
 			psmt = conn.prepareStatement(sql);
 			psmt.setLong(1, music.getTag1());
@@ -1151,16 +1151,16 @@ public class MusicDaoImp implements MusicDao {
 			psmt.setString(10, music.getZone());
 			psmt.setString(11, music.getMusicurl());
 			psmt.setLong(12, music.getMusId());
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			int result = psmt.executeUpdate();
-			System.out.println("本次操作影响" + result + "行");
-			// 8.获取操作结果，设置flag
+			System.out.println("鏈鎿嶄綔褰卞搷" + result + "琛�");
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 			return false;
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -1181,16 +1181,16 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public void resetAritist(Artist artist) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "update artist set name = ?,image1 = ?,image2 = ?,description = ?,category = ?,gender = ?where art_id = ?;";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
-			// 6.为参数设置值
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
+			// 6.涓哄弬鏁拌缃��
 			psmt.setString(1, artist.getName());
 			psmt.setString(2, artist.getImage1());
 			psmt.setString(3, artist.getImage2());
@@ -1199,15 +1199,15 @@ public class MusicDaoImp implements MusicDao {
 			psmt.setString(6, artist.getGender());
 			psmt.setLong(7, artist.getArtId());
 
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			int result = psmt.executeUpdate();
-			System.out.println("本次操作影响" + result + "行");
-			// 8.获取操作结果，设置flag
+			System.out.println("鏈鎿嶄綔褰卞搷" + result + "琛�");
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -1225,16 +1225,16 @@ public class MusicDaoImp implements MusicDao {
 
 	@Override
 	public void resetAlbum(Album album) throws AppException {
-		Connection conn = null;// 连接声明
-		PreparedStatement psmt = null;// 预处理语句声明
-		ResultSet rs = null;// 返回结果结合声明
+		Connection conn = null;// 杩炴帴澹版槑
+		PreparedStatement psmt = null;// 棰勫鐞嗚鍙ュ０鏄�
+		ResultSet rs = null;// 杩斿洖缁撴灉缁撳悎澹版槑
 		try {
 			conn = DBUtil.getConnection();
-			// System.out.println("UserDaoImp.save()获取数据库连接成功");
+			// System.out.println("UserDaoImp.save()鑾峰彇鏁版嵁搴撹繛鎺ユ垚鍔�");
 			String sql = "update album set art_id = ?,name = ?,publishdate = ?,image1 = ?,image2 = ?,company = ?,description = ?where alb_id = ?;";
 			psmt = conn.prepareStatement(sql);
-			System.out.println("sql语句预处理成功");
-			// 6.为参数设置值
+			System.out.println("sql璇彞棰勫鐞嗘垚鍔�");
+			// 6.涓哄弬鏁拌缃��
 			psmt.setLong(1, album.getArt_id());
 			psmt.setString(2, album.getName());
 			psmt.setString(3, album.getPublishdate());
@@ -1244,15 +1244,15 @@ public class MusicDaoImp implements MusicDao {
 			psmt.setString(7, album.getDescription());
 			psmt.setLong(8, album.getAlbId());
 
-			// 7.执行新增操作
+			// 7.鎵ц鏂板鎿嶄綔
 			int result = psmt.executeUpdate();
-			System.out.println("本次操作影响" + result + "行");
-			// 8.获取操作结果，设置flag
+			System.out.println("鏈鎿嶄綔褰卞搷" + result + "琛�");
+			// 8.鑾峰彇鎿嶄綔缁撴灉锛岃缃甪lag
 		} catch (SQLException e) {
-			// 9.异常处理
+			// 9.寮傚父澶勭悊
 			e.printStackTrace();
 		} finally {
-			// 10.关闭数据库连接
+			// 10.鍏抽棴鏁版嵁搴撹繛鎺�
 			try {
 				DBUtil.closeStatement(psmt);
 			} catch (SQLException e) {
@@ -1269,22 +1269,22 @@ public class MusicDaoImp implements MusicDao {
 	}
 
 	@Override
-	//精确
+	//绮剧‘
 	public MusicBusiModel getMusicByRealname(String realname) throws AppException {
 
-		Connection conn = null;//声明数据库连接
-		PreparedStatement psmt = null;//声明预处理语句
-		ResultSet rs,rs1 = null;//声明结果集合		
-		MusicBusiModel mbmd = new MusicBusiModel();//声明MusicBusiModel对象
+		Connection conn = null;//澹版槑鏁版嵁搴撹繛鎺�
+		PreparedStatement psmt = null;//澹版槑棰勫鐞嗚鍙�
+		ResultSet rs,rs1 = null;//澹版槑缁撴灉闆嗗悎		
+		MusicBusiModel mbmd = new MusicBusiModel();//澹版槑MusicBusiModel瀵硅薄
 		
 		try{
-			//获得所有tag和对应的编号
-			//使用hashmap存放tag.tag_id -> tag.tagname
-			conn = DBUtil.getConnection();//获得数据库连接
-			String sql1 = "select * from tag;";//获取tag信息的sql语句
-			psmt = conn.prepareStatement(sql1);//预处理获取tag信息的sql语句
-			rs1 = psmt.executeQuery(sql1);//执行获取tag信息的语句
-			Map map = new HashMap();//用hashMap存储
+			//鑾峰緱鎵�鏈塼ag鍜屽搴旂殑缂栧彿
+			//浣跨敤hashmap瀛樻斁tag.tag_id -> tag.tagname
+			conn = DBUtil.getConnection();//鑾峰緱鏁版嵁搴撹繛鎺�
+			String sql1 = "select * from tag;";//鑾峰彇tag淇℃伅鐨剆ql璇彞
+			psmt = conn.prepareStatement(sql1);//棰勫鐞嗚幏鍙杢ag淇℃伅鐨剆ql璇彞
+			rs1 = psmt.executeQuery(sql1);//鎵ц鑾峰彇tag淇℃伅鐨勮鍙�
+			Map map = new HashMap();//鐢╤ashMap瀛樺偍
 			while(rs1.next()){
 				map.put(rs1.getInt(1), rs1.getString(2));
 				//System.out.println(rs1.getString(1)+rs1.getString(2)+rs1.getString(3)+rs1.getString(4));
@@ -1311,20 +1311,20 @@ public class MusicDaoImp implements MusicDao {
 			//System.out.println(sql);
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery(sql);
-			System.out.println("执行sql语句");
+			System.out.println("鎵цsql璇彞");
 			while(rs.next()){
-				//设置MusicBusiModel
+				//璁剧疆MusicBusiModel
 				mbmd.setDown_count(rs.getInt(15));
 				mbmd.setHit_count(rs.getInt(16));
 				mbmd.setId(rs.getInt(1));
 				mbmd.setName(rs.getString(2));
-				//System.out.println("歌曲名:"+rs.getString(2));
+				//System.out.println("姝屾洸鍚�:"+rs.getString(2));
 				mbmd.setRealname(rs.getString(3));
 				mbmd.setLrc(rs.getString(4));
 				mbmd.setZone(rs.getString(5));
 				mbmd.setPublishdate(rs.getString(6));
 				mbmd.setTag1(map.get(rs.getInt(7)).toString());
-				//tag2、tag3可为null
+				//tag2銆乼ag3鍙负null
 				if(rs.getInt(8)!=0){
 					mbmd.setTag2(map.get(rs.getInt(8)).toString());
 				}
@@ -1343,7 +1343,7 @@ public class MusicDaoImp implements MusicDao {
 				mbmd.setAlbum(rs.getString(13));
 				mbmd.setArtist_photo(rs.getString(14));
 			}
-			//关闭结果集合，语句和连接
+			//鍏抽棴缁撴灉闆嗗悎锛岃鍙ュ拰杩炴帴
 			DBUtil.closeResultSet(rs);
 			DBUtil.closeResultSet(rs1);
 			DBUtil.closeStatement(psmt);
