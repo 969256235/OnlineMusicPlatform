@@ -15,4 +15,9 @@
 			class="com.ruanko.music.web.SingleMusic">
 			<result name="success">/PlayPage.jsp</result>
 			<result name="error">/error.jsp</result>
+		</action>
+		<action name="FileUpload"
+			class="com.ruanko.music.web.FileUpload">
+			<result name="success">/SuccessUpload.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action></package></struts>    
