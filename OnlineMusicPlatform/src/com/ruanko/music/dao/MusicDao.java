@@ -182,4 +182,19 @@ public interface MusicDao {
 	 * @throws AppException
 	 */
 	public MusicBusiModel getMusicByRealname(String realname) throws AppException;
+	
+	/**
+	 * 播放热度增加
+	 * @param music id
+	 * @throws AppException
+	 */
+	public void addHits(String id) throws AppException;
+	
+	/**
+	 * 下载热度增加
+	 * @param music id
+	 * @throws AppException
+	 */
+	public void addDown(String id) throws AppException;
+
 }
