@@ -34,7 +34,7 @@ public class Signin extends ActionSupport {
 				return "Adm";
 			}
 			message = "admin failed to signin";
-			return ERROR;
+			return "Signin";
 		}
 		else{
 			UserService us = new UserService();

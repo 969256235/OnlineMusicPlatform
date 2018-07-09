@@ -45,6 +45,7 @@
 			<result name="success">/index.jsp</result>
 			<result name="error">/error.jsp</result>
 			<result name="Adm">/Adm.jsp</result>
+			<result name="Signin">/signin.jsp</result>
 		</action>
 		<action name="Signup" class="com.ruanko.music.web.Signup">
 			<result name="success">/signin.jsp</result>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Struts2Diagram version="2.0">
-  <package name="default" location="200,154" size="325,964">
-    <action name="GetRankList" location="168,120" size="150,62">
+  <package name="default" location="200,154" size="346,985">
+    <action name="GetRankList" location="191,143" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="main.jsp" />
       </result>
@@ -9,7 +9,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="Search" location="171,208" size="150,62">
+    <action name="Search" location="194,231" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="search.jsp" />
       </result>
@@ -17,7 +17,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="SingleMusic" location="171,288" size="150,62">
+    <action name="SingleMusic" location="194,311" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="PlayPage.jsp" />
       </result>
@@ -25,7 +25,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="FileUpload" location="171,365" size="150,62">
+    <action name="FileUpload" location="194,388" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="SuccessUpload.jsp" />
       </result>
@@ -33,7 +33,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="AdmSearch" location="171,440" size="150,62">
+    <action name="AdmSearch" location="194,463" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="admsearch.jsp" />
       </result>
@@ -41,7 +41,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="DeleteMusic" location="170,522" size="150,62">
+    <action name="DeleteMusic" location="193,545" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="SuccessDelete.jsp" />
       </result>
@@ -49,7 +49,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="ShowManage" location="169,609" size="150,62">
+    <action name="ShowManage" location="192,632" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="ManageMusic.jsp" />
       </result>
@@ -57,7 +57,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="ManageMusic" location="168,687" size="150,62">
+    <action name="ManageMusic" location="191,710" size="150,62">
       <result name="success">
         <resourceEdge source="success" routing="0" target="SuccessManage.jsp" />
       </result>
@@ -65,7 +65,7 @@
         <resourceEdge source="error" routing="0" target="error.jsp" />
       </result>
     </action>
-    <action name="Signin" location="151,764" size="150,83">
+    <action name="Signin" location="174,787" size="150,83">
       <result name="success">
         <resourceEdge source="success" routing="0" target="index.jsp" />
       </result>
@@ -75,8 +75,11 @@
       <result name="Adm">
         <resourceEdge source="Adm" routing="0" target="Adm.jsp" />
       </result>
+      <result name="Signin">
+        <resourceEdge source="Signin" routing="0" target="signin.jsp" />
+      </result>
     </action>
-    <action name="Signup" location="116,877" size="163,83">
+    <action name="Signup" location="139,900" size="163,83">
       <result name="success">
         <resourceEdge source="success" routing="0" target="signin.jsp" />
       </result>
@@ -101,6 +104,6 @@
   <webResource name="Adm.jsp" path="/Adm.jsp" location="500,350" size="150,55" />
   <webResource name="signin.jsp" path="/signin.jsp" location="500,650" size="150,55" />
   <webResource name="signup.jsp" path="/signup.jsp" location="526,801" size="150,55" />
-  <webResource name="index.jsp" path="/index.jsp" location="0,0" size="150,55" />
+  <webResource name="index.jsp" path="/index.jsp" location="50,950" size="150,55" />
 </Struts2Diagram>
 
