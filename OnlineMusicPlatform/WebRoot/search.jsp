@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="titleBar">
       <div class="center">
-        <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RankoMusic</a>
+        <a href="${pageContext.servletContext.contextPath}/" class="titleBar">RankoMusic</a>
         <a href="${pageContext.servletContext.contextPath}/signup.jsp" class="signright">Sign up</a>
         <a class="signor">or</a>
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       	<table id="resultTable">
       	  <c:forEach var="result" items="${SearchList}">
       	  <tr>
-      	    <td><c:out value="${result}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${result}"><button class="musicbutton"></button></a></td>
+      	    <td><c:out value="${result.name}"/><a href="/OnlineMusicPlatform/SingleMusic?musicname=${result}"><button class="musicbutton"></button></a></td>
       	  </tr>
       	  </c:forEach>
       	</table>

@@ -116,7 +116,7 @@ th{
 }
 
 td{
-	display: block;
+	display: inline-table;
 	text-align: left;
 	text-decoration: none;
 	padding-top: 0.5em;
@@ -136,13 +136,13 @@ td{
 	border: none;
 }
 
-a.tds{
+.addbutton{
 	display: block;
-	text-align: left;
-	text-decoration: none;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	padding-left: 0.5em;
-	padding-right: 0.5em;
-	font-size: 1.5em;
+	float: right;
+	width: 2em;
+	height: 2em;
+	margin-right: 5px;
+	background: url(./addbutton.png);
+	background-size: cover;
+	border: none;
 }
