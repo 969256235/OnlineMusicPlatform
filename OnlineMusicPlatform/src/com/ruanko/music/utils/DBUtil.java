@@ -7,22 +7,22 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * 管理数据库连接和关闭
+ * 绠＄悊鏁版嵁搴撹繛鎺ュ拰鍏抽棴
  */
 /**
  * @author JP
  *
  */
 public class DBUtil {
-	//数据库连接字符串
-	//格式： 数据库协议://<数据库服务器地址>[<:端口号>]/<数据库名称>?字符设置
+	//鏁版嵁搴撹繛鎺ュ瓧绗︿覆
+	//鏍煎紡锛� 鏁版嵁搴撳崗璁�://<鏁版嵁搴撴湇鍔″櫒鍦板潃>[<:绔彛鍙�>]/<鏁版嵁搴撳悕绉�>?瀛楃璁剧疆
 	static private String url = "jdbc:mysql://localhost:3306/music?useUnicode=true&amp;"+"characterEncoding=utf8&useSSL=false";
-	//数据库用户名
+	//鏁版嵁搴撶敤鎴峰悕
 	static private String user = "root";
-	//数据库密码
-	static private String password = "130513";
+	//鏁版嵁搴撳瘑鐮�
+	static private String password = "123456";
 	
-	//静态代码块，实现驱动加载，仅在该类呗加载时执行一次}
+	//闈欐�佷唬鐮佸潡锛屽疄鐜伴┍鍔ㄥ姞杞斤紝浠呭湪璇ョ被鍛楀姞杞芥椂鎵ц涓�娆
 	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -32,7 +32,7 @@ public class DBUtil {
 		}
 	}
 	
-	//创建连接
+	//鍒涘缓杩炴帴
 	public static Connection getConnection(){
 		Connection conn = null;
 		try {
@@ -45,7 +45,7 @@ public class DBUtil {
 		return conn;
 	}
 	
-	//xxx关闭操作，判断均为xxx！=null且!xxx.isClosed()
+	//xxx鍏抽棴鎿嶄綔锛屽垽鏂潎涓簒xx锛�=null涓�!xxx.isClosed()
 	public static void closeConnection(Connection conn) throws SQLException{
 		if( (conn != null) && (!conn.isClosed()) ){
 			conn.close();
