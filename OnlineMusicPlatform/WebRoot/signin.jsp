@@ -27,14 +27,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="titleBar">
       <div class="center">
-        <a href="${pageContext.servletContext.contextPath}/" class="titleBar">RuanKoMusic</a>
+        <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RuanKoMusic</a>
         <a href="${pageContext.servletContext.contextPath}/signup.jsp" class="signright">Sign up</a>
         <a class="signor">or</a>
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
-        <form action="" method="post">
-          <input type="submit" name="SearchSubmit" class="searchSub" value=" ">
-          <input type="text" name="SearchText" class="searchBox" placeholder="Search" autocomplete="on">
-        </form>
+      
       </div>
     </div>
     <body>
@@ -52,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         </div>
         <div class="col-md-4">
-            <form class="form-signin" method="post" action="login-check.jsp">
+            <form class="form-signin" method="post" action="/OnlineMusicPlatform/Signin">
                 <h2 class="form-signin-heading">SIGN IN</h2>
                 <label for="">Account</label>
                 <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名" required autofocus><br>
@@ -60,11 +57,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码" required>
                 <div class="checkbox">
                     <label>
-                        <input type="checkbox" value="remember-me" checked="checked"> Remember password
+                      <input type="radio" name="box" id=box1 value=admin/>Admin
+                       <input type="radio" name="box"id=box2 value=user/>User
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary" id="btn-login">Sign In</button>
-                <a href="reg.jsp" class="btn btn-default">Sign Up</a>
+        
+                <a href="signup.jsp" class="btn btn-default">Sign Up</a>
+                
             </form> 
         </div>
         <div class="col-md-4">

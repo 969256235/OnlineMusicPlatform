@@ -40,4 +40,14 @@
 			class="com.ruanko.music.web.ManageMusic">
 			<result name="success">/SuccessManage.jsp</result>
 			<result name="error">/error.jsp</result>
-		</action></package></struts>    
+		</action>
+		<action name="Signin" class="com.ruanko.music.web.Signin">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+			<result name="Adm">/Adm.jsp</result>
+		</action>
+		<action name="Signup" class="com.ruanko.music.web.Signup">
+			<result name="success">/signin.jsp</result>
+			<result name="error">/error.jsp</result>
+
+			<result name="Signup">/signup.jsp</result></action></package></struts>    

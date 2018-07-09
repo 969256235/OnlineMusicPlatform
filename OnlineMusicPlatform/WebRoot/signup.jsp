@@ -26,7 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    <div class="titleBar">
       <div class="center">
-        <a href="${pageContext.servletContext.contextPath}/" class="titleBar">RuanKoMusic</a>
+        <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RuanKoMusic</a>
         <a href="${pageContext.servletContext.contextPath}/signup.jsp" class="signright">Sign up</a>
         <a class="signor">or</a>
         <a href="${pageContext.servletContext.contextPath}/signin.jsp" class="signleft">Sign in</a>
@@ -40,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <nav class="navbar navbar-default">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./">RuanKoMusic</a>
+            <a class="navbar-brand" href="./">软酷在线音乐平台</a>
         </div>
       
     </div>
@@ -51,19 +51,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <div class="col-md-4">
 
-            <form class="form-signin" action="reg-submit.jsp" method="post">
+            <form class="form-signin" action="/OnlineMusicPlatform/Signup" method="post">
                 <h2 class="form-signin-heading">SIGN UP</h2>
                 <div id="info">
 
                 </div>
                 <label for="">Account</label>
-                <input type="text" name="username" id="username" class="form-control" placeholder="Please Enter Account" required autofocus><br>
+                <input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名" required autofocus><br>
+                <label for="">Nickname</label>
+                <input type="text" name="nickname" id="nickname" class="form-control" placeholder="请输入昵称" required autofocus><br>
                 <label for="">Password</label>
-                <input type="password" name="password" id="password" class="form-control" placeholder="Please Enter Password" required><br>
-                <label for="">Confirm Password</label>
-                <input type="password" name="password2" id="password2" class="form-control" placeholder="Please Confirm Password" required maxLength="16"><br>
+                <input type="password" name="password" id="password" class="form-control" placeholder="请输入密码" required><br>
+                <label for="">Repeat</label>
+                <input type="password" name="password2" id="password2" class="form-control" placeholder="请再次输入密码" required maxLength="16"><br>
                 <button type="submit" class="btn btn-primary" id="btn-reg">Sign Up</button>
-                <a href="login.jsp" class="btn btn-default" id="btn-reg">Return to Sign In</a>
+                <a href="signin.jsp" class="btn btn-default" id="btn-reg">Return to Sign In</a>
             </form>
         </div>
         <div class="col-md-4">
