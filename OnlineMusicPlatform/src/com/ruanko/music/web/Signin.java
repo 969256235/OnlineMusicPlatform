@@ -48,7 +48,7 @@ public class Signin extends ActionSupport {
 			}
 			else{
 				message = "登录失败";
-				return ERROR;
+				return "Signin";
 			}
 
 		}
