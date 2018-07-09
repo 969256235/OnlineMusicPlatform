@@ -10,10 +10,10 @@ import com.ruanko.music.utils.AppException;
  */
 public class UserService {
 
-	private UserDao user_dao = null;
+	static UserDao user_dao = new UserDaoImp();
 	
 	public UserService(){
-		user_dao = new UserDaoImp();
+		UserService.user_dao = new UserDaoImp();
 	}
 	
 	/**
@@ -22,10 +22,10 @@ public class UserService {
 	 * @return flag:true-已存在；false-不存在
 	 * @throws AppException
 	 */
-	public boolean isExist(User user) throws AppException{
+	public static boolean isExist(User user) throws AppException{
 		boolean flag = false;
 		try{
-			flag = this.user_dao.isExist(user.getAccount());
+			flag = user_dao.isExist(user.getAccount());
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.isExist");
 		}
@@ -38,14 +38,14 @@ public class UserService {
 	 * @return flag:true-注册成功；false-注册失败
 	 * @throws AppException
 	 */
-	public boolean register(User user) throws AppException{
+	public static boolean regist(User user) throws AppException{
 		boolean flag = false;
 		try{
-			if(!this.isExist(user)){
-				System.out.println("账户未被注册");
+			if(!UserService.isExist(user)){
+				//System.out.println("账户未被注册");
 				flag = user_dao.save(user);
 				//flag=true则操作成功
-				System.out.print("注册操作flag:"+flag);
+				//System.out.print("注册操作flag:"+flag);
 			}
 		}catch(AppException e){
 			throw new AppException("com.ruanko.music.service.UserService.register");
@@ -59,7 +59,7 @@ public class UserService {
 	 * @return 用户昵称
 	 * @throws AppException
 	 */
-	public String login(User user) throws AppException{
+	public static String login(User user) throws AppException{
 		String nickname = "";
 		try{
 			nickname = user_dao.login(user.getAccount(), user.getPassword());

@@ -16,10 +16,10 @@ import com.ruanko.music.utils.AppException;
  */
 public class MusicService {
 
-	private MusicDao music_dao;
+	static MusicDao music_dao = new MusicDaoImp();
 	
 	public MusicService(){
-		this.music_dao = new MusicDaoImp(); 
+		MusicService.music_dao = new MusicDaoImp(); 
 	}
 	
 	/**
@@ -27,7 +27,7 @@ public class MusicService {
 	 * @return 包含十个MusicBusiModel的List
 	 * @throws AppException
 	 */
-	public ArrayList<MusicBusiModel> getMostPopMusic() throws AppException{
+	public static ArrayList<MusicBusiModel> getMostPopMusic() throws AppException{
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getMostPopMusic();
@@ -45,7 +45,7 @@ public class MusicService {
 	 * @return 包含十个MusicBusiModel的List
 	 * @throws AppException
 	 */
-	public ArrayList<MusicBusiModel> getNewestMusic() throws AppException{
+	public static ArrayList<MusicBusiModel> getNewestMusic() throws AppException{
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getNewestMusic();
@@ -63,7 +63,7 @@ public class MusicService {
 	 * @return 包含十个MusicBusiModel的List
 	 * @throws AppException
 	 */
-	public ArrayList<MusicBusiModel> getRandomMusic() throws AppException{
+	public static ArrayList<MusicBusiModel> getRandomMusic() throws AppException{
 		ArrayList<MusicBusiModel> mbml = new ArrayList<MusicBusiModel>();
 		try{
 			mbml = music_dao.getRandomMusic();
@@ -82,7 +82,7 @@ public class MusicService {
 	 * @return MusicBusiModel
 	 * @throws AppException
 	 */
-	public MusicBusiModel getMusicById(String id) throws AppException{
+	public static MusicBusiModel getMusicById(String id) throws AppException{
 		MusicBusiModel mbm = new MusicBusiModel();
 		try{
 			mbm = music_dao.getMusicById(id);
@@ -102,7 +102,7 @@ public class MusicService {
 	 * @return 符合条件的歌曲列表
 	 * @throws AppException
 	 */
-	public ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
+	public static ArrayList<MusicBusiModel> getMusicByContent(String content, int type) throws AppException{
 		ArrayList<MusicBusiModel> mbml_temp,mbml;
 		try{
 			mbml = new ArrayList<MusicBusiModel>();
@@ -139,7 +139,7 @@ public class MusicService {
 	 * @return 添加后的Music的Id
 	 * @throws AppException
 	 */
-	public int addMusic(MusicBusiModel mbm) throws AppException{
+	public static int addMusic(MusicBusiModel mbm) throws AppException{
 		Music music = new Music();
 		Artist artist = new Artist();
 		Album album = new Album();
@@ -195,7 +195,7 @@ public class MusicService {
 	 * @param id
 	 * @throws AppException
 	 */
-	public void deleteMusicById(String id) throws AppException{
+	public static void deleteMusicById(String id) throws AppException{
 		try{
 			music_dao.delMusic(id);
 		}catch(AppException e){
@@ -208,7 +208,7 @@ public class MusicService {
 	 * @param mbm MusicBusiMoedl
 	 * @throws AppException
 	 */
-	public void resetMusic(MusicBusiModel mbm) throws AppException{
+	public static void resetMusic(MusicBusiModel mbm) throws AppException{
 		Music music = new Music();
 		Artist artist = new Artist();
 		Album album = new Album();
@@ -255,7 +255,7 @@ public class MusicService {
 	 * @param artist
 	 * @throws AppException
 	 */
-	public void resetArtist(Artist artist) throws AppException{
+	public static void resetArtist(Artist artist) throws AppException{
 		try{
 			music_dao.resetAritist(artist);
 		}catch(AppException e){
@@ -268,7 +268,7 @@ public class MusicService {
 	 * @param artist
 	 * @throws AppException
 	 */
-	public void resetArtist(Album album) throws AppException{
+	public static void resetArtist(Album album) throws AppException{
 		try{
 			music_dao.resetAlbum(album);
 		}catch(AppException e){
@@ -282,7 +282,7 @@ public class MusicService {
 	 * @return MusicBusiModel
 	 * @throws AppException
 	 */
-	public MusicBusiModel getMusicByRealname(String realname) throws AppException{
+	public static MusicBusiModel getMusicByRealname(String realname) throws AppException{
 		MusicBusiModel mbm = new MusicBusiModel();
 		try{
 			mbm = music_dao.getMusicByRealname(realname);

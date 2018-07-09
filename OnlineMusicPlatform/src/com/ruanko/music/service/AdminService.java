@@ -7,13 +7,13 @@ import com.ruanko.music.utils.AppException;
 
 public class AdminService {
 
-	private AdminDao admin_dao;
+	static AdminDao admin_dao = new AdminDaoImp();
 	
 	public AdminService(){
-		this.admin_dao = new AdminDaoImp();
+		AdminService.admin_dao = new AdminDaoImp();
 	}
 	
-	public String login(Admin admin) throws AppException{
+	public static String login(Admin admin) throws AppException{
 		String username = "";
 		try{
 			username = admin_dao.login(admin.getUsername(), admin.getPassword());
