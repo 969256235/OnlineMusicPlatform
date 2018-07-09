@@ -25,6 +25,6 @@
 			<attribute name="owner.project.facets" value="web.struts2"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="mysql-connector-java-5.1.46-bin.jar"/>
+	<classpathentry kind="lib" path="WebRoot/lib/mysql-connector-java-5.1.46-bin.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
