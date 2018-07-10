@@ -38,7 +38,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      		<img alt="AlbumCover" src="${pageContext.servletContext.contextPath}/${music.cover}" class = "albumCover">
      		<div class = "btn-audio">
      			<audio id = "mp3Btn" >
-     				<source src="${pageContext.servletContext.contextPath}/${music.musicurl}" type = "audio/mpeg" />
+     				<source src="${pageContext.servletContext.contextPath}/images/1001.jpg" type = "audio/mpeg" />
      			</audio>
      		</div>
      		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.10.0/jquery.min.js"></script>
@@ -218,7 +218,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		lyricContainer.appendChild(fragment);
         	}
      		
-     		getLyric("${pageContext.servletContext.contextPath}/upload/20180704000030.lrc")
+     		getLyric("${pageContext.servletContext.contextPath}/upload/20180704000002.lrc")
      		
      	</script>
      </div>
