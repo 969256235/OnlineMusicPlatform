@@ -1354,5 +1354,69 @@ public class MusicDaoImp implements MusicDao {
 		return mbmd;
 	}
 	
+	@Override
+	public void addHits(String id) throws AppException {
+		Connection conn = null;// 连接声明
+		PreparedStatement psmt = null;// 预处理语句声明
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "update popularity set hits_count = hits_count +1 where (obj_id = "+ id +"and type = 3) or (obj_id = (select alb_id from music where mus_id = "+ id +")and type = 1) or (obj_id = (select art_id from music where mus_id = "+ id +")and type = 2)";
+			psmt = conn.prepareStatement(sql);
+			System.out.println("sql语句预处理成功");
+			int result = psmt.executeUpdate();
+			System.out.println("本次操作影响" + result + "行");
+			// 8.获取操作结果，设置flag
+		} catch (SQLException e) {
+			// 9.异常处理
+			e.printStackTrace();
+		} finally {
+			// 10.关闭数据库连接
+			try {
+				DBUtil.closeStatement(psmt);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				DBUtil.closeConnection(conn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
+	@Override
+	public void addDown(String id) throws AppException {
+		Connection conn = null;// 连接声明
+		PreparedStatement psmt = null;// 预处理语句声明
+		try {
+			conn = DBUtil.getConnection();
+			String sql = "update popularity set down_count = down_count +1 where (obj_id = "+ id +"and type = 3) or (obj_id = (select alb_id from music where mus_id = "+ id +")and type = 1) or (obj_id = (select art_id from music where mus_id = "+ id +")and type = 2)";
+			psmt = conn.prepareStatement(sql);
+			System.out.println("sql语句预处理成功");
+			int result = psmt.executeUpdate();
+			System.out.println("本次操作影响" + result + "行");
+			// 8.获取操作结果，设置flag
+		} catch (SQLException e) {
+			// 9.异常处理
+			e.printStackTrace();
+		} finally {
+			// 10.关闭数据库连接
+			try {
+				DBUtil.closeStatement(psmt);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			try {
+				DBUtil.closeConnection(conn);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }

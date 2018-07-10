@@ -295,4 +295,29 @@ public class MusicService {
 		return mbm;	
 	}
 	
+	/**
+	 * 点击量加一
+	 * @param music_id
+	 * @throws AppException
+	 */
+	public static void addHits(String id) throws AppException{
+		try{
+			music_dao.addHits(id);
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.addHit");
+		}
+	}
+	
+	/**
+	 * 下载量加一
+	 * @param music_id
+	 * @throws AppException
+	 */
+	public static void addDown(String id) throws AppException{
+		try{
+			music_dao.addDown(id);
+		}catch(AppException e){
+			throw new AppException("com.ruanko.music.service.UserService.addDown");
+		}
+	}
 }
