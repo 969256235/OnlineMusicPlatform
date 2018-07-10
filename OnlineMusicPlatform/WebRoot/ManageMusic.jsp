@@ -19,10 +19,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+	<link rel="stylesheet" type="text/css" href="style/MainStyle.css">
+    <link rel="stylesheet" type="text/css" href="style/Theme.css">
+    <link rel="stylesheet" type="text/css" href="style/Manage.css">
+    <link rel="stylesheet" type="text/css" href="./style/Sign.css">
 
   </head>
   
   <body>
-    This is my JSP page. <br>
+    <div class="titleBar">
+      <div class="center">
+        <a href="${pageContext.servletContext.contextPath}/GetRankList" class="titleBar">RuanKoMusic</a>
+        <form action="/OnlineMusicPlatform/AdmSearch" method="post">
+          <input type="submit" name="SearchSubmit" class="searchSub2" value="">
+          <input type="text" name="SearchText" class="searchBox" placeholder="Search" autocomplete="on">
+        </form>
+      </div>
+    </div>
+     <div class="bodycenter">
+        <form method="post" enctype="multipart/form-data" action="/OnlineMusicPlatform/ManageMusic">
+          <input type="text" name="id" style="display: none" value="${mbmd.id}">
+          <input type="text" name="name" value="${mbmd.name}"><br>
+          <input type="text" name="realname" value="${mbmd.realname}"><br>
+          <input type="text" name="artist" value="${mbmd.artist}"><br>
+          <input type="text" name="album" value="${mbmd.album}"><br>
+          <input type="text" name="zone" value="${mbmd.zone}"><br>
+          <input type="text" name="publishdate" value="${mbmd.publishdate}"><br>
+          <input type="submit">
+        </form>
+      </div>
   </body>
 </html>

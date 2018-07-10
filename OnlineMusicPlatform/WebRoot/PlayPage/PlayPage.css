@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 body{
 	background: #fdfdfd;
 	font-size:100%;
@@ -22,11 +23,10 @@ to {-webkit-transform: rotate(360deg);}
 }
 
 .playPage{
-	
 	font-family: Axure Handwriting;
 }
 
-/*∂•≤ø¿∏*/
+/*È°∂ÈÉ®Ê†è*/
 .topBar{
 	position:fixed;
 	top:0px;
@@ -118,7 +118,7 @@ a.signor{
 	background-color: white;
 }
 
-/*≤•∑≈œ‘ æ*/
+/*Êí≠ÊîæÊòæÁ§∫*/
 .wrapper{
 	position:fixed;
 	top:8em;
@@ -134,11 +134,14 @@ a.signor{
 }
 .albumCover{
 	width:17em;
-	border-radius:100%
+	border-radius:100%;
+	
 }
 
 .btn-audio{
-    margin-left: 7em;
+	position: relative;
+    top: 70px;
+    margin-left: 4em;
     margin-top: 1em;
     width: 266px;
     height: 90px;

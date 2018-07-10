@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'SuccessUpload.jsp' starting page</title>
+    <title>My JSP 'signinsuccess.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,7 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    Music Upload Success!<br>
-    <a href="${pageContext.servletContext.contextPath}/Adm.jsp">点击此处返回！</a>
+    This is my JSP page. <br>
+    <script>
+      window.location.replace("http://localhost:8080/OnlineMusicPlatform/GetRankList");
+    </script>
   </body>
 </html>
