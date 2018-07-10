@@ -42,7 +42,7 @@
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="Signin" class="com.ruanko.music.web.Signin">
-			<result name="success">/index.jsp</result>
+			<result name="success">/signinsuccess.jsp</result>
 			<result name="error">/error.jsp</result>
 			<result name="Adm">/Adm.jsp</result>
 			<result name="Signin">/signin.jsp</result>

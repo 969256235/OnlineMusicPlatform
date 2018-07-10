@@ -22,13 +22,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="style/MainStyle.css">
     <link rel="stylesheet" type="text/css" href="style/Theme.css">
     <link rel="stylesheet" type="text/css" href="style/Manage.css">
+    <link rel="stylesheet" type="text/css" href="./style/Sign.css">
 
   </head>
   
   <body>
     <div class="titleBar">
       <div class="center">
-        <a href="${pageContext.servletContext.contextPath}/" class="titleBar">RuanKoMusic</a>
+        <a href="${pageContext.servletContext.contextPath}/GetRankList" class="titleBar">RuanKoMusic</a>
         <form action="/OnlineMusicPlatform/AdmSearch" method="post">
           <input type="submit" name="SearchSubmit" class="searchSub2" value="">
           <input type="text" name="SearchText" class="searchBox" placeholder="Search" autocomplete="on">
