@@ -1,5 +1,10 @@
 @CHARSET "UTF-8";
 
+body{
+	background: #fdfdfd;
+	font-size:100%;
+	font-family: Axure Handwriting;
+}
 p.line{
 	float: left;
 	display: block;
@@ -7,9 +12,9 @@ p.line{
 	margin: 2px 16px 0px 16px;
 	width: 948px;
 	height: 3px;
-	background-color: #000000;
+	background-color: #82ccd5;
 	font-size: 0px;
-	color: black;
+	color: #82ccd5;
 	border: 0px;
 	padding: 0px;
 }
@@ -39,7 +44,7 @@ p.text{
 	padding-left: 0.5em;
 	text-decoration: none;
 	font-size: 1em;
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Axure Handwriting;
 	font-weight: 700;
 }
 
@@ -56,6 +61,7 @@ button.muslis{
 }
 
 .bodycenter{
+	font-family: Axure Handwriting;
 	width: 980px;
 	margin-left: auto;
 	margin-right: auto;
@@ -73,11 +79,13 @@ button.muslis{
 	height: 500px;
 	margin: 16px 16px 0px 16px;
 }
-
+.firstImgs{
+	width:290px;
+}
 .firstImg{
 	float: left;
-	width: 290px;
-	height: 290px;
+	width: 150px;
+	height: 150px;
 }
 
 a.Lable{
@@ -91,7 +99,7 @@ a.Lable{
 	padding-left: 1.4em;
 	text-decoration: none;
 	font-size: 1.5em;
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Axure Handwriting;
 	font-weight: 700;
 }
 
@@ -111,19 +119,19 @@ th{
 	padding-left: 1em;
 	padding-right: 1em;
 	font-size: 1em;
-	font-family: Arial,Helvetica,sans-serif;
+	font-family: Axure Handwriting;
 	font-weight: 700;
 }
 
 td{
+	font-size:16px;
 	display: inline-table;
 	text-align: left;
 	text-decoration: none;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
+	padding-top: 0.8em;
+	padding-bottom: 0.8em;
 	padding-left: 0.5em;
 	padding-right: 0.5em;
-	font-size: 1.5em;
 }
 
 .musicbutton{

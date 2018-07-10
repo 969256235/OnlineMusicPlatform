@@ -29,7 +29,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
     <div class="titleBar">
       <div class="center">
-        <a href="${pageContext.servletContext.contextPath}/main.jsp" class="titleBar">RuanKoMusic</a>
+        <a href="${pageContext.servletContext.contextPath}/" class="titleBar">RuanKoMusic</a>
+        <form action="/OnlineMusicPlatform/AdmSearch" method="post">
+          <input type="submit" name="SearchSubmit" class="searchSub2" value="">
+          <input type="text" name="SearchText" class="searchBox" placeholder="Search" autocomplete="on">
+        </form>
       </div>
     </div>
     

@@ -17,6 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<link rel="stylesheet" type="text/css" href="PlayPage/PlayPage.css">
+    <link rel="stylesheet" type="text/css" href="../style/Theme.css">
 	
   </head>
   
@@ -218,7 +219,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		lyricContainer.appendChild(fragment);
         	}
      		
-     		getLyric("${pageContext.servletContext.contextPath}/upload/20180704000030.lrc")
+     		getLyric("${pageContext.servletContext.contextPath}/${music.lrc}")
      		
      	</script>
      </div>
